@@ -58,18 +58,6 @@ In order to run the app on a device, you'll need **Platform SDKs** for the platf
 #### Note
 You don't have to install the **Cordova CLI**. It's provided with the generator. The installer installs the Cordova CLI locally (not globally).
 
-## Generator
-Everything else you need will be installed using:
-```sh
-npm install --global generator-m-ionic
-
-## Questions?
-Contact Manuel Gonzalez @ design@stheory.com.
-
-## Running into issues?
-Do the following:
- 1. check out the [FAQ](https://github.com/mwaylabs/generator-m-ionic/tree/master/docs/contribute/faq.md) and [issues](https://github.com/mwaylabs/generator-m-ionic/issues) see if there already is a solution or answer to that matter.
- 
 ## Currently used Cordova plugins
 
 cordova-plugin-dialogs - http://ngcordova.com/docs/plugins/dialogs/ 
@@ -89,5 +77,17 @@ cordova-plugin-geolocation - http://ngcordova.com/docs/plugins/geolocation/
 de.appplant.cordova.plugin.badge - http://ngcordova.com/docs/plugins/badge/
 cordova-plugin-nativeaudio - http://ngcordova.com/docs/plugins/nativeAudio/
 
+## Generator
+Everything else you need will be installed using:
+```sh
+npm install --global generator-m-ionic
+
+## Questions?
+Contact Manuel Gonzalez @ design@stheory.com.
+
+## Running into issues?
+Do the following:
+ 1. check out the [FAQ](https://github.com/mwaylabs/generator-m-ionic/tree/master/docs/contribute/faq.md) and [issues](https://github.com/mwaylabs/generator-m-ionic/issues) see if there already is a solution or answer to that matter.
+ 
 ## License
 Code licensed under MIT. Docs under Apache 2. PhoneGap is a trademark of Adobe.
