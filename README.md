@@ -43,15 +43,6 @@ Development:
 </p>
 
 
-## Quick Start
-- [Quick Start](https://github.com/mwaylabs/generator-m-ionic/tree/master/docs/intro/0_quick_start.md) for the experienced developer.
-- [Try the demo](https://github.com/mwaylabs/generator-m-ionic-demo). Get a quick impression by cloning the sample project generated with the latest version of Generator-M-Ionic.
-
-## Introduction
-- More on: [Why you need it](https://github.com/mwaylabs/generator-m-ionic/tree/master/docs/intro/0_why_you_need_it.md)
-- More on: [What's in the box](https://github.com/mwaylabs/generator-m-ionic/tree/master/docs/intro/1_whats_in_the_box.md)
-
-
 ## Installation and Prerequisites
 
 Besides simply installing everything, I recommend having or obtaining a **fair knowledge** of the technologies, so you can understand what you are doing.
