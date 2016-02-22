@@ -1,0 +1,31 @@
+.menu-subheader-shadow {
+  width:100%;
+  box-shadow: 0px 5px 5px rgba(0,0,0,0.6);
+  -moz-box-shadow: 0px 5px 5px rgba(0,0,0,0.6);
+  -webkit-box-shadow: 0px 5px 5px rgba(0,0,0,0.6);
+  -o-box-shadow: 0px 5px 5px rgba(0,0,0,0.6);
+
+}
+
+.messenger-notification-badge {
+  float: left;
+  left: 32px;
+  position: relative;
+  background-color: $royal;
+  border: 2px solid $royal;
+  border-radius: 14px; /* one half of ( (border * 2) + height + padding ) */
+  color: $light;
+  font: bold 12px/10px Helvetica, Verdana, Tahoma;
+  height: 18px;
+  padding: 2px 3px 0 2px;
+  text-align: center;
+  min-width: 18px;
+}
+.item-royal {
+  background-color:$royal;
+}
+.last-update-text{
+  font-size: 10px;
+  padding:5px;
+  color:$royal;
+}

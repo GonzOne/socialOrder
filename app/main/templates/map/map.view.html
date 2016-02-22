@@ -1,0 +1,48 @@
+<ion-view>
+
+<ion-content>
+           <div id="map_top" class="map-header">
+                    <h2>Venues for {{mapController.zipcode}}</h2>
+                    <hr>
+           </div>
+            <div class="g-map mt-20">
+                <ng-map center="41,-87" zoom="3"></ng-map>
+                    <div class="map-center">
+                        <button class="button button-clear icon ion-pinpoint" ng-click="mapController.centerMap()"></button>
+                    </div>
+                    <div class="map-hr"></div>
+                <div class="mt-10 so-animate-reveal" ng-show="mapController.venue">
+                        <div class="map-venue-item" ng-click="mapController.setVenue($index)">
+                            <div class='venue-thumbnail-wrapper'>
+                                <img ng-src="{{mapController.venue.photo_url}}" class=""/>
+                                <div class='venue-info-overlay'>
+                                    <div class='venue-name'>
+                                        <span><strong>{{mapController.venue.name}}</strong></span>
+                                        <p><i class="icon ion-location"></i>  {{mapController.venue.address}}, {{mapController.venue.city}} {{mapController.venue.zipcode}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="map-distance-module" ng-show="mapController.distanceToVenue">
+                    <span>Is {{mapController.distanceToVenue}} away from you.</span>
+                </div>
+                <div id="menu_button" class="map-menu-button" ng-show="mapController.venue">
+                    <button class="button button-block button-outline button-royal" ui-sref="menu({menuId: mapController.venue.menu_id})">Menu</button>
+                </div>
+            </div>
+
+</ion-content>
+    <ion-footer-bar class="bar bar-royal">
+        <div class="button-bar">
+            <button class="button button-clear" ui-sref="main">
+                <i class="icon ion-location"></i>
+            </button>
+
+            <button class="button button-clear" ng-click="mapController.logIn()">
+                <!-- ng-class="$variableToEvaluate ? 'class-if-true' : 'class-if-false'"-->
+                <i ng-class="venuesController.isUserLoggedIn ?  'icon ion-log-out' : 'icon ion-log-in'"></i>
+            </button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

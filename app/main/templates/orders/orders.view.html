@@ -1,0 +1,39 @@
+<ion-view>
+    <div class="bar bar-subheader menu-subheader-shadow">
+        <h2 class="title">Orders</h2>
+    </div>
+    <ion-content has-subheader>
+        <section class="mt-65">
+            <ion-list can-swipe="true">
+                <ion-item collection-repeat="item in ordersController.orders" class="item-royal so-animate-repeat">
+                    <div class="row">
+                        <div class="col-50 text-align-left">
+                            <span>Requested: {{item.orderTime}}</span>
+                        </div>
+                        <div class="col-50 text-align-right">
+                            <button class="button button-light button-small button-outline" ng-click="ordersController.acceptOrder($index)">
+                                <strong>ACCEPT</strong>
+                            </button>
+                        </div>
+                        <ion-option-button class="button-assertive icon ion-ios-minus" ng-click="ordersController.cancelItem($index)"></ion-option-button>
+                    </div>
+
+                </ion-item>
+            </ion-list>
+
+        </section>
+    </ion-content>
+    <ion-footer-bar class="bar bar-royal">
+        <div class="button-bar">
+            <button class="button button-clear" ng-click="ordersController.navigateTo('home')">
+                <i class="icon ion-home"></i>
+            </button>
+            <button class="button button-clear" ng-click="ordersController.navigateTo('profile')">
+                <i class="icon ion-person"></i>
+            </button>
+            <button class="button button-clear" ng-click="ordersController.logIn()">
+                <i ng-class="ordersController.isUserLoggedIn ?  'icon ion-log-out' : 'icon ion-log-in'"></i>
+            </button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

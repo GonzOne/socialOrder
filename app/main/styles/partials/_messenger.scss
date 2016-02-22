@@ -1,0 +1,122 @@
+.messenger-custom-header{
+  height:200px !important;
+  width:100%;
+  @include box-shadow(5px);
+  .messsenger-profile {
+    width: 100%;
+    height: 175px;
+    margin: 0, auto;
+  }
+  .messenger-title{
+    position:absolute;
+    width:100%;
+    float:left;
+    bottom:0px;
+    top:170px;
+    left:0px;
+    height:25px;
+    padding:2px;
+    text-align:center;
+    color:$light;
+    z-index:888;
+    font-size:1.2rem;
+    font-weight:300;
+  }
+}
+
+.messenger-chat-module {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 200px;
+}
+.messenger-discussion {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 50px 0; // finality
+  li {
+    padding: 0.5rem;
+    overflow: hidden;
+    display: flex;
+  }
+}
+
+.other {
+  .other-messages {
+    background: $stable;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 1px 2px rgba(black, 0.2);
+    p {
+      font-size: 0.8rem;
+      color: $royal;
+      margin: 0 0 0.2rem 0;
+    }
+    span {
+      font-size: 0.7rem;
+      color: $royal;
+    }
+  }
+}
+/*
+.other-messages {
+  background: $stable;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 1px 2px rgba(black, 0.2);
+  p {
+    font-size: 0.8rem;
+    color:$royal;
+    margin: 0 0 0.2rem 0;
+  }
+  span {
+    font-size: 0.7rem;
+    color: $royal;
+  }
+
+}
+*/
+.self {
+  justify-content: flex-end;
+  align-items: flex-end;
+    .self-messages {
+      background: $royal;
+      padding: 10px;
+      border-radius: 20px;
+      box-shadow: 0 1px 2px rgba(black, 0.2);
+      p {
+        font-size: 0.8rem;
+        color: $light;
+        margin: 0 0 0.2rem 0;
+      }
+      span {
+        font-size: 0.7rem;
+        color: $stable;
+      }
+    }
+}
+/*
+.self-messages {
+  background: $royal;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 1px 2px rgba(black, 0.2);
+  p {
+    font-size: 0.8rem;
+    color:$light;
+    margin: 0 0 0.2rem 0;
+  }
+  span {
+    font-size: 0.7rem;
+    color: $stable;
+  }
+
+}
+*/
+.messenger-input-fixed-outside{
+  position: absolute;
+  bottom: 0;
+  color:white;
+  width: 100%;
+  height:  95px;
+  text-align:center;
+}

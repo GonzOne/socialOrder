@@ -1,0 +1,71 @@
+/*
+ * Product Box Directive
+*/
+.product-container {
+  margin: 0 auto;
+  padding:10px;
+
+
+}
+.product-directive {
+  background-color:$royal;
+  padding:10px;
+
+  hr{
+    border-top: 1px solid $light;
+    opacity: .2;
+  }
+  .product-header-bar{
+    height:35px;
+    color:$light;
+    //@include debugOutline(red,solid);
+
+    span.name{
+        float:left;
+        @include font-size(14px)
+    }
+    span.price{
+      float:right;
+
+    }
+  }
+  .product-description-container {
+      color:$light;
+      margin-top:5px;
+      //padding:5px;
+      height:50px;
+      text-align:left;
+      //@include debugOutline(red,solid);
+
+  }
+  .product-footer-bar {
+    margin-top:5px;
+    padding-top:10px;
+    height:45px;
+    color:$light;
+    text-align:center;
+    //@include debugOutline(red,solid);
+  }
+  .product-notification-badge{
+      float: left;
+      left: 35px;
+      position: relative;
+      background-color: $royal;
+      border: 2px solid $light;
+      border-radius: 10px; /* one half of ( (border * 2) + height + padding ) */
+      color: $light;
+      font: bold 12px/10px Helvetica, Verdana, Tahoma;
+      height: 18px;
+      padding: 2px 3px 0 2px;
+      text-align: center;
+      min-width: 18px;
+  }
+ i.product-icon::before {
+    font-size: 30px;
+    color:$light;
+  }
+
+}
+/*
+* Another directive
+*/

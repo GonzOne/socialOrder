@@ -1,0 +1,57 @@
+i.close-icon::before {
+  padding:4px;
+  font-size: 25px;
+}
+.checkout-header{
+  margin-top:5px;
+  padding:10px;
+  text-align:center;
+   hr{
+     width:90%;
+   }
+}
+.checkout-price-wrapper{
+  position:relative;
+  overflow: hidden;
+  text-align:center;
+  .checkout-price-total-overlay{
+    float:right;
+    position:absolute;
+    bottom:0px;
+    left:0px;
+    height:50px;
+    width:50px;
+    background-color:$light;
+    opacity:0.8;
+    filter:alpha(opacity=60);
+  }
+}
+.checkout-price-tag{
+  position:absolute;
+  float:right;
+  bottom:0px;
+  top:22%;
+  left:80%;
+  height:25px;
+  width:60px;
+  background-color:$light;
+  opacity:0.6;
+  padding:2px;
+  text-align:center;
+  color:$dark;
+  z-index:999;
+  filter:alpha(opacity=60);
+}
+.checkout-order {
+  margin-top:20px;
+  padding:10px;
+}
+.checkout-item {
+  border:none;
+  border-color: transparent;
+}
+.checkout-hr {
+  width:100%;
+  color:$royal;
+}
+

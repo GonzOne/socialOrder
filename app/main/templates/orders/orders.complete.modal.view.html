@@ -1,0 +1,17 @@
+<div class="modal">
+    <ion-header-bar class="bar-royal">
+        <h1 class="title">Order Complete</h1>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <ion-list>
+            <ion-radio ng-repeat=" item in orderCompleteController.reasons" ng-model="orderCompleteController.selected" ng-value="item.value">{{item.reason}}</ion-radio>
+        </ion-list>
+    </ion-content>
+    <ion-footer-bar class="bar bar-royal">
+        <div class="button-bar">
+            <button class="button button-outline button-light" ng-click="closeModal(0)">CANCEL</button>
+            <button class="button button-royal" ng-disabled="!orderCompleteController.selected" ng-click="orderCompleteController.send()">SEND</button>
+        </div>
+    </ion-footer-bar>
+
+</div>

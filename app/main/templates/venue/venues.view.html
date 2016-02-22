@@ -1,0 +1,32 @@
+<ion-view>
+    <ion-content class="mt-5">
+       <section ng-view class="fade">
+        <div class="list">
+            <div class="item venue-item" ng-repeat="venue in venuesController.list" ng-click="venuesController.setVenue($index)">
+                <div class='venue-thumbnail-wrapper'>
+                    <img ng-src="{{venue.photo_url}}" class=""/>
+                    <div class='venue-info-overlay'>
+                        <div class='venue-name'>
+                            <span><strong>{{venue.name}}</strong></span>
+                            <p><i class="icon ion-location"></i>  {{venue.address}}, {{venue.city}} {{venue.zipcode}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       </section>
+    </ion-content>
+
+    <ion-footer-bar class="bar bar-royal">
+        <div class="button-bar">
+            <button class="button button-clear" ui-sref="map({zipcode: venuesController.userZipcode})">
+                <i class="icon ion-map"></i>
+            </button>
+
+            <button class="button button-clear" ng-click="venuesController.logIn()">
+                <!-- ng-class="$variableToEvaluate ? 'class-if-true' : 'class-if-false'"-->
+                <i ng-class="venuesController.isUserLoggedIn ?  'icon ion-log-out' : 'icon ion-log-in'"></i>
+            </button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

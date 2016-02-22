@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <!-- ionic meta tags -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- custom meta tags -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Social Order</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css main/styles/app.css -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="main/styles/main.css">
+    <!-- endinject -->
+    <!-- endbuild -->
+  </head>
+  <body ng-app="socialOrder">
+
+    <ion-nav-bar class="bar-royal no-animation" animation="no-animation">
+        <ion-nav-title>
+            <img class="mt-5" alt="Social Order logo" height="37" src="./main/assets/images/logo.png">
+        </ion-nav-title>
+    </ion-nav-bar>
+
+    <ion-nav-view></ion-nav-view>
+
+    <!-- will be a 404 during development -->
+    <script src="cordova.js"></script>
+    <!-- Google Api -->
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyCqUxSZOI3HP9BpnRTuqRvNCL3eaIzkVxw"></script>
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/ionic/release/js/ionic.js"></script>
+    <script src="bower_components/ionic/release/js/ionic-angular.js"></script>
+    <script src="bower_components/ngCordova/dist/ng-cordova.js"></script>
+    <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="bower_components/localforage/dist/localforage.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/angularfire/dist/angularfire.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/cloudinary-core/cloudinary-core.js"></script>
+    <script src="bower_components/cloudinary_ng/js/angular.cloudinary.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="bower_components/angular-momentjs/angular-momentjs.js"></script>
+    <script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/app.js -->
+    <!-- inject:js -->
+    <script src="main/main.js"></script>
+    <script src="main/services/venue.service.js"></script>
+    <script src="main/services/user.service.js"></script>
+    <script src="main/services/token.service.js"></script>
+    <script src="main/services/staff.service.js"></script>
+    <script src="main/services/sms.service.js"></script>
+    <script src="main/services/profile.service.js"></script>
+    <script src="main/services/network.service.js"></script>
+    <script src="main/services/modal.service.js"></script>
+    <script src="main/services/messenger.services.js"></script>
+    <script src="main/services/login.service.js"></script>
+    <script src="main/services/image.service.js"></script>
+    <script src="main/services/google.service.js"></script>
+    <script src="main/services/globals.service.js"></script>
+    <script src="main/services/dateFormatter.service.js"></script>
+    <script src="main/services/cart.service.js"></script>
+    <script src="main/services/auth.service.js"></script>
+    <script src="main/directives/product/product.directive.js"></script>
+    <script src="main/controllers/venues.controller.js"></script>
+    <script src="main/controllers/venue.menu.item.controller.js"></script>
+    <script src="main/controllers/venue.menu.controller.js"></script>
+    <script src="main/controllers/profile.controller.js"></script>
+    <script src="main/controllers/orders.controller.js"></script>
+    <script src="main/controllers/order.detail.controller.js"></script>
+    <script src="main/controllers/order.complete.controller.js"></script>
+    <script src="main/controllers/order.cancel.controller.js"></script>
+    <script src="main/controllers/messenger.controller.js"></script>
+    <script src="main/controllers/map.controller.js"></script>
+    <script src="main/controllers/login.controller.js"></script>
+    <script src="main/controllers/dashboard.controller.js"></script>
+    <script src="main/controllers/checkout.controller.js"></script>
+    <script src="main/controllers/checkin.controller.js"></script>
+    <script src="main/constants/config-const.js"></script>
+    <script src="app.js"></script>
+    <!-- endinject -->
+    <!-- endbuild -->
+  </body>
+</html>

@@ -1,0 +1,37 @@
+@import "core/variables";
+
+$ionicons-font-path: "../assets/fonts" !default;
+$font-header: 'Cabin', 'Montserrat', Helvetica, Arial, sans-serif;
+$font-body: 'Lato', 'Montserrat', Helvetica, Arial, sans-serif;
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+p {
+  font-family: $font-body;
+  color: $light;
+}
+// Include all of Ionic
+@import "../../bower_components/ionic/scss/ionic";
+
+@import "core/util";
+@import "core/animations";
+@import "core/customFunctions";
+@import "core/include-media";
+@import "partials/login";
+@import "partials/venues";
+@import "partials/map";
+@import "partials/menu";
+@import "partials/directives";
+@import "partials/checkout";
+@import "partials/profile";
+@import "partials/messenger";
+@import "partials/dashboard";
+@import "partials/orders";
+
+
+
+
+
+

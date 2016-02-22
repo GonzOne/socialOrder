@@ -1,0 +1,36 @@
+.map-header {
+  width:100%;
+  padding:10px 3%;
+  text-align:center;
+  display:block;
+  hr {
+    width:90%;
+    color:$royal;
+  }
+}
+.g-map {
+  margin: 0 auto;
+  width:90%;
+
+ .map-center{
+   text-align:center;
+   background-color:$royal;
+ }
+
+}
+.map-venue-item {
+  @extend venue-item;
+  padding:0px;
+}
+.map-distance-module {
+  padding:5px;
+  background-color:$dark;
+  span {
+    padding:5px;
+    color:$light;
+  }
+}
+.map-menu-button {
+  text-align:center;
+  padding:10px;
+}

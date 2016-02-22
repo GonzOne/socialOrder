@@ -1,0 +1,46 @@
+<div class="modal">
+
+    <div class="bar bar-royal bar-header messenger-custom-header">
+
+        <div class="messsenger-profile">
+            <div class="overflow-hidden">
+                <div class="profile-img-upload" ng-style="{'background-image': 'url({{messengerController.user.profilePicUrl}})'}" >
+                </div>
+                <span class="messenger-title">{{messengerController.username}}</span>
+            </div>
+
+        </div>
+    </div>
+    <ion-content>
+        <section class="messenger-chat-module">
+            <ol class="messenger-discussion">
+                <li ng-repeat="item in messengerController.messages" ng-class="{1:'other', 2:'self'}[item.role]">
+                    <div ng-class="{1:'other-messages', 2:'self-messages'}[item.role]">
+                        <p>{{item.message}}</p>
+                        <span>{{item.timestamp}}</span>
+                    </div>
+
+                </li>
+            </ol>
+        </section>
+    </ion-content>
+    <div class="messenger-input-fixed-outside">
+        <div class="list">
+
+            <div class="item item-input-inset">
+                <label class="item-input-wrapper">
+                    <input type="text" ng-model="messengerController.userMessage" placeholder="Type a message...">
+                </label>
+                <button class="button button-small button-royal" ng-click="messengerController.sendDirectMessage()">
+                    SEND
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <ion-footer-bar class="bar bar-royal">
+        <div class="button-bar">
+            <button class="button button-outline button-light" ng-click="closeModal()">CLOSE</button>
+        </div>
+    </ion-footer-bar>
+</div>

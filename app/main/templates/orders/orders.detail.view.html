@@ -1,0 +1,49 @@
+<ion-view>
+    <ion-content>
+        <section class="order-profile-module">
+            <div class="profile-module">
+                <div class="overflow-hidden">
+                    <div class="profile-img-upload" ng-style="{'background-image': 'url({{orderDetailController.profilePicUrl}})'}" >
+                    </div>
+                    <div class="profile-username">{{orderDetailController.username}}</div>
+                </div>
+
+            </div>
+        </section>
+        <div class="order-title">
+            <span>ORDER OVERVIEW</span>
+            <hr>
+        </div>
+        <section class="orders-module">
+                <div class="list">
+
+                    <div class="single-item" ng-repeat="item in orderDetailController.orders">
+                            <div class="row">
+                                <div class="col-50 text-align-left">
+                                  <span>{{item.name}}</span>
+                                </div>
+                                <div class="col-50 text-align-right">
+                                  <span>${{item.cost}}</span>
+                                </div>
+                            </div>
+                        <hr>
+
+                    </div>
+                </div>
+
+        </section>
+    </ion-content>
+    <ion-footer-bar class="bar bar-royal">
+        <div class="button-bar">
+            <button class="button button-clear" ng-click="orderDetailController.cancelOrder()">
+                <i class="icon ion-thumbsdown"></i>
+            </button>
+            <button class="button button-clear" ng-click="orderDetailController.displayMessenger()">
+                <i class="icon ion-chatbox"></i>
+            </button>
+            <button class="button button-clear" ng-click="orderDetailController.orderComplete()">
+                <i class="icon ion-thumbsup"></i>
+            </button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

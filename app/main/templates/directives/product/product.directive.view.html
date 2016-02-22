@@ -1,0 +1,17 @@
+<div class="product-container">
+    <div class="product-directive">
+        <div class="product-header-bar">
+            <span class="name"><strong>{{soProductBoxController.name}}</strong></span>
+            <span class="price"><strong>${{soProductBoxController.price}}</strong></span>
+        </div>
+        <div class="product-description-container">
+            <p>{{soProductBoxController.desc}}</p>
+        </div>
+        <hr>
+        <div class="product-footer-bar">
+                 <button class="button button-small button-clear" ng-click="soProductBoxController.add()">
+                     <i class="icon product-icon ion-plus-circled"><div class="product-notification-badge"  ng-show="soProductBoxController.quantity > 0">{{soProductBoxController.quantity}}</div></i>
+                 </button>
+        </div>
+    </div>
+</div>

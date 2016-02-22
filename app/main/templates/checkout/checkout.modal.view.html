@@ -1,0 +1,34 @@
+<div class="modal">
+    <ion-header-bar>
+        <div ng-click="modal.hide()"><i class="icon close-icon ion-close"></i></div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="checkout-header">
+            <h3>Your Order</h3>
+            <hr>
+        </div>
+        <section class="checkout-order">
+            <ion-list can-swipe="true">
+                <ion-item class="checkout-item" collection-repeat="item in checkoutController.items">
+                    <div style="float:left">
+                        <h2>{{item.name}}</h2>
+                    </div>
+                    <div style="float:right">
+                        <span>${{item.cost}}</span>
+                    </div>
+                    <ion-option-button class="button-assertive icon ion-ios-minus" ng-click="checkoutController.removeItem($index)"></ion-option-button>
+                    <hr class="checkout-hr">
+                </ion-item>
+
+            </ion-list>
+        </section>
+    </ion-content>
+    <ion-footer-bar class="bar bar-light">
+        <div class="checkout-price-tag">${{checkoutController.total}}</div>
+        <div class="button-bar">
+                <button class="button button-royal" ng-click="checkoutController.submitOrder()">PLACE ORDER</button>
+        </div>
+
+    </ion-footer-bar>
+
+</div>

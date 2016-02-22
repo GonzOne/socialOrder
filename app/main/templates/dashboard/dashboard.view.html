@@ -1,0 +1,29 @@
+<ion-view>
+    <div class="bar bar-subheader menu-subheader-shadow">
+        <h2 class="title">Dashboard</h2>
+    </div>
+    <ion-content>
+        <section class="dashboard-button-menu mt-65">
+            <button class="button button-block button-royal" ng-click="dashboardController.viewOrders()">
+                <strong>ORDERS</strong>
+            </button>
+            <button class="button button-block button-royal">
+               <strong>MENU</strong>
+            </button>
+        </section>
+
+    </ion-content>
+    <ion-footer-bar class="bar bar-royal">
+        <div class="button-bar">
+            <button class="button button-clear" ui-sref="dashboard" ui-sref-active="active">
+                <i class="icon ion-home"></i>
+            </button>
+            <button class="button button-clear" ng-click="dashboardController.navigateToProfile()">
+                <i class="icon ion-person"></i>
+            </button>
+            <button class="button button-clear" ng-click="dashboardController.logIn()">
+                <i ng-class="dashboardController.isUserLoggedIn ?  'icon ion-log-out' : 'icon ion-log-in'"></i>
+            </button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

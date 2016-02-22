@@ -1,0 +1,31 @@
+<ion-view>
+    <div class="bar bar-subheader menu-subheader-shadow">
+        <button class="button icon button-clear button-royal ion-chevron-left" ng-click="venueMenuItemController.back()">
+        </button>
+        <h2 class="title align-left">{{venueMenuItemController.typeLabel}}</h2>
+
+    </div>
+    <ion-content has-subheader>
+
+        <section class="mt-50">
+
+            <div class="list"  collection-repeat="item in venueMenuItemController.items">
+                <so-product-box name="{{item.name}}" price="{{item.cost}}"
+                                desc="{{item.desc}}"
+                                quantity="{{item.count}}"
+                                max="10"
+                                add-fn="venueMenuItemController.addItem($index)"></so-product-box>
+            </div>
+
+        </section>
+
+    </ion-content>
+    <ion-footer-bar class="bar bar-royal">
+        <div class="button-bar">
+            <!--
+            <button class="button button-outline button-light" ng-disabled="venueMenuItemController.isOrderEmpty" ng-click="venueMenuItemController.viewOrder()">Review Order</button>
+            -->
+            <button class="button button-light" ng-click="venueMenuItemController.reviewOrder()">REVIEW ORDER</button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

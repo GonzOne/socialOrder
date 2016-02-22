@@ -1,0 +1,25 @@
+<div class="modal">
+    <ion-header-bar class="bar-royal">
+        <h1 class="title">Check In</h1>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <section ng-view class="fade">
+            <div class="list">
+                <div class="venue-item" ng-repeat="venue in checkinController.list" ng-click="checkinController.setVenue($index)">
+                    <div class='venue-thumbnail-wrapper'>
+                        <img ng-src="{{venue.photo_url}}" class=""/>
+                        <div class='venue-info-overlay'>
+                            <div class='venue-name'>
+                                <span><strong>{{venue.name}}</strong></span>
+                                <p><i class="icon ion-location"></i>  {{venue.address}}, {{venue.city}} {{venue.zipcode}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </ion-content>
+    <ion-footer-bar class="bar bar-royal">
+    </ion-footer-bar>
+
+</div>

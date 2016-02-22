@@ -1,0 +1,50 @@
+<div class="modal login-modal-royal">
+    <ion-header-bar class="bar-royal">
+        <div ng-click="modal.hide()"><i class="icon login-close-icon ion-close"></i></div>
+    </ion-header-bar>
+    <ion-content>
+        <section class="login-form">
+            <form name="appLoginForm" novalidate>
+                <div class="list">
+                    <div class="form-input">
+                        <span><strong>EMAIL</strong></span>
+                        <input name="user_email" type="email" placeholder="ENTER YOUR EMAIL ADDRESS" minlength="5" maxlength="100" ng-model="loginController.user.email" required>
+                    </div>
+                    <hr class="login-hr">
+                    <div ng-messages="appLoginForm.user_email.$error" role="alert">
+                        <div ng-message-exp="'required'">Please enter an email address</div>
+                        <div ng-message-exp="['minlength', 'maxlength']">
+                            Your email must be between 5 and 100 characters long
+                        </div>
+                    </div>
+
+
+                    <div class="form-input">
+                        <span><strong>PASSWORD</strong></span>
+                        <input name = user_password" type="password" placeholder="ENTER YOUR PASSWORD" ng-model="loginController.user.password" required>
+                    </div>
+                    <hr class="login-hr">
+                    <div ng-messages="appLoginForm.user_password.$error" role="alert">
+                        <div ng-message-exp="'required'">Please enter your password</div>
+                    </div>
+
+                </div>
+                <div class="login-button-container mt-20">
+                    <button class="button button-outline button-block button-light" ng-disabled="userForm.$invalid" ng-click="loginController.login()">
+                        SIGN IN
+                    </button>
+                    <button class="button button-block button-light">
+                        CREATE ACCOUNT
+                    </button>
+                </div>
+            </form>
+
+
+        </section>
+    </ion-content>
+    <ion-footer-bar class="bar bar-royal button-footer-bar">
+            <button class="button button-small button-clear button-light">
+                forgot your password ?
+            </button>
+    </ion-footer-bar>
+</div>

@@ -1,0 +1,39 @@
+<ion-view>
+    <div class="bar bar-subheader menu-subheader-shadow">
+        <h2 class="title align-left">{{venueMenuController.venueName}}</h2>
+        <button class="button button-clear button-large" ng-disabled="!venueMenuController.serverAccepted" ng-click="venueMenuController.displayMessenger()">
+            <i class="icon ion-ios-person-outline"><div class="messenger-notification-badge" ng-show="venueMenuController.messengerCount > 0">{{venueMenuController.messengerCount}}</div></i>
+        </button>
+    </div>
+    <ion-content has-subheader>
+
+        <section class="mt-50">
+            <span class="last-update-text">last updated {{venueMenuController.lastUpdate}}</span>
+            <ion-list>
+                <ion-item collection-repeat="item in venueMenuController.menuItems | orderBy:'priority'" class="item-royal item-icon-right so-animate-repeat" ui-sref="category({menuId:item.menuId, itemId:item.itemId })">
+                    {{item.displayName}}
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+            </ion-list>
+
+        </section>
+
+        <!-- <span>last updated {{venueMenuController.lastUpdate}}</span>  -->
+    </ion-content>
+    <ion-footer-bar class="bar bar-royal">
+        <div class="button-bar">
+            <button class="button button-clear" ui-sref="main">
+                <i class="icon ion-location"></i>
+            </button>
+            <button class="button button-clear" ng-click="venueMenuController.navigateToProfile()">
+                <i class="icon ion-person"></i>
+            </button>
+            <button class="button button-clear" ng-click="venueMenuController.sendSms()">
+                <i class="icon ion-share"></i>
+            </button>
+            <button class="button button-clear" ng-click="venueMenuController.logIn()">
+                <i ng-class="venueMenuController.isUserLoggedIn ?  'icon ion-log-out' : 'icon ion-log-in'"></i>
+            </button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

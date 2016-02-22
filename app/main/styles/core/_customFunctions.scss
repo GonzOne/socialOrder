@@ -1,0 +1,65 @@
+@function tint($color, $percentage) {
+  @return mix($color, white, $percentage);
+
+}
+
+@function shade($color, $percentage) {
+  @return mix($color, black, $percentage);
+}
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+@mixin border-radius($radius) {
+  border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+}
+
+@mixin box-shadow($box-shadow) {
+  box-shadow: 0px $box-shadow $box-shadow rgba(0,0,0,0.6);
+  -moz-box-shadow: 0px $box-shadow $box-shadow rgba(0,0,0,0.6);
+  -webkit-box-shadow: 0px $box-shadow $box-shadow rgba(0,0,0,0.6);
+  -o-box-shadow: 0px $box-shadow $box-shadow rgba(0,0,0,0.6);
+}
+
+@mixin transition($transition) {
+  transition: $transition;
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+}
+@mixin debugOutline($color, $style){
+  outline-width: 1px;
+  outline-style: $style;
+  outline-color: $color;
+}
+
+
+/*
+@function bottom-shadow($depth) {
+  $primary-offset: nth(1.5 3 6 10 15, $depth) * 1px;
+  $blur: nth(1 3 3 5 6, $depth) * 4px;
+  $color: rgba(black, nth(.24 .23 .23 .22 .22, $depth));
+
+  @return 0 $primary-offset $blur $color;
+}
+@function top-shadow($depth) {
+  $primary-offset: nth(1.5 3 10 14 19, $depth) * 1px;
+  $blur: nth(1.5 3 10 14 19, $depth) * 4px;
+  $color: rgba(black, nth(.12 .16 .19 .25 .30, $depth));
+
+  @return 0 $primary-offset $blur $color;
+}
+*/

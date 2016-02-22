@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.stheory.socialorder.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Social Order</name>
+    <description>
+        An eccommerece messaging app.
+    </description>
+    <author email="design@stheory.com" href="http://cordova.io">
+    </author>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+    <engine name="ios" spec="~3.9.2" />
+    <engine name="android" spec="~4.1.1" />
+    <plugin name="cordova-plugin-dialogs" spec="~1.2.0" />
+    <plugin name="cordova-plugin-inappbrowser" spec="~1.3.0" />
+    <plugin name="com.ionic.keyboard" spec="~1.0.4" />
+    <plugin name="cordova-plugin-network-information" spec="~1.2.0" />
+    <plugin name="cordova-plugin-splashscreen" spec="~3.2.0" />
+    <plugin name="cordova-plugin-statusbar" spec="~2.1.1" />
+    <plugin name="cordova-plugin-vibration" spec="~2.1.0"/>
+    <plugin name="cordova-plugin-camera" spec="~2.1.0" />
+    <plugin name="cordova-plugin-contacts" spec="~2.0.1" />
+    <plugin name="com.cordova.plugins.sms" spec="~0.1.8" />
+    <plugin name="com.synconset.imagepicker" spec="~1.0.7" />
+    <plugin name="cordova-plugin-file" spec="~4.1.1" />
+    <plugin name="cordova-plugin-file-transfer" spec="~1.5.0" />
+    <plugin name="cordova-plugin-geolocation" spec="~2.1.0" />
+    <plugin name="de.appplant.cordova.plugin.badge" spec="~0.7.1" />
+    <plugin name="cordova-plugin-nativeaudio" spec="~3.0.6" />
+    <preference name="MediaPlaybackRequiresUserAction" value="true"/>
+    <preference name="BackupWebStorage" value="local"/>
+    <preference name="SuppressesIncrementalRendering" value="true"/>
+</widget>
