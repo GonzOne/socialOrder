@@ -64,13 +64,30 @@ Everything else you need will be installed using:
 npm install --global generator-m-ionic
 
 ## Questions?
-Contact Manuel @ design@stheory.com
+Contact Manuel Gonzalez @ design@stheory.com.
 
 ## Running into issues?
 Do the following:
  1. check out the [FAQ](https://github.com/mwaylabs/generator-m-ionic/tree/master/docs/contribute/faq.md) and [issues](https://github.com/mwaylabs/generator-m-ionic/issues) see if there already is a solution or answer to that matter.
  
-## Want to contribute?
+## Currently used Cordova plugins
+
+cordova-plugin-dialogs - http://ngcordova.com/docs/plugins/dialogs/ 
+cordova-plugin-inappbrowser - http://ngcordova.com/docs/plugins/inAppBrowser/
+com.ionic.keyboard - http://ngcordova.com/docs/plugins/keyboard/
+cordova-plugin-network-information - http://ngcordova.com/docs/plugins/network/
+cordova-plugin-splashscreen - http://ngcordova.com/docs/plugins/splashscreen/
+cordova-plugin-statusbar - http://ngcordova.com/docs/plugins/statusbar/
+cordova-plugin-vibration - http://ngcordova.com/docs/plugins/vibration/
+cordova-plugin-camera - http://ngcordova.com/docs/plugins/camera/
+cordova-plugin-contacts - http://ngcordova.com/docs/plugins/contacts/
+com.cordova.plugins.sms - http://ngcordova.com/docs/plugins/sms/
+com.synconset.imagepicker - http://ngcordova.com/docs/plugins/imagePicker/
+cordova-plugin-file - http://ngcordova.com/docs/plugins/file/
+cordova-plugin-file-transfer - http://ngcordova.com/docs/plugins/fileTransfer/
+cordova-plugin-geolocation - http://ngcordova.com/docs/plugins/geolocation/
+de.appplant.cordova.plugin.badge - http://ngcordova.com/docs/plugins/badge/
+cordova-plugin-nativeaudio - http://ngcordova.com/docs/plugins/nativeAudio/
 
 ## License
 Code licensed under MIT. Docs under Apache 2. PhoneGap is a trademark of Adobe.
