@@ -7,10 +7,14 @@ angular.module('main')
       vm.navigateTo = navigateTo;
       vm.logIn = logIn;
       vm.viewOrders = viewOrders;
+
       function navigateTo (str) {
         switch (str) {
           case 'profile':
             $state.go('staff', {uId: AppGlobals.getUserId()});
+            break;
+          case 'menu':
+            $state.go('staff-menu', {menuId: AppGlobals.getMenuId()});
             break;
           default:
         }
