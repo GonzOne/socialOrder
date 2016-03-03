@@ -1,12 +1,32 @@
 <ion-view>
     <ion-content>
+        <div class="profile-module">
+
+            <div class="overflow-hidden">
+                <div class="profile-img" ng-style= "{'background-image': 'url(' + staffController.profilePic + ')'}">>
+                </div>
+            </div>
+        </div>
+        <div class="profile-cta-container">
+            <div class="button-bar">
+                <button class="button button-icon" ng-click="staffController.captureImage()">
+                    <i class="cta-icon ion-ios-camera"></i>
+                </button>
+                <button class="button button-icon" ng-click="staffController.selectImage()">
+                    <i class="cta-icon ion-image"></i>
+                </button>
+                <button ng-disabled="!staffController.profilePicAdded" class="button button-icon icon" ng-click="staffController.startUpload()">
+                    <i class="cta-icon ion-upload"></i>
+                </button>
+            </div>
+        </div>
     </ion-content>
     <ion-footer-bar class="bar bar-royal">
         <div class="button-bar">
             <button class="button button-clear" ng-click="staffController.goBack()">
                 <i class="icon ion-home"></i>
             </button>
-            <button class="button button-clear" ui-sref="profile" ui-sref-active="active">
+            <button class="button button-clear" ui-sref="staff" ui-sref-active="active">
                 <i class="icon ion-person"></i>
             </button>
             <button class="button button-clear" ng-click="staffController.logIn()">
