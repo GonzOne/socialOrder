@@ -57,9 +57,13 @@ angular.module('main')
                       };
                       archiveOrder(msgObj);
                       $log.log('SingleRequestCtrl - msgObj ', msgObj);
-                      vm.unwatch();
+
                       MessageService.setDirectMessageStaffById(msgObj, AppGlobals.getDirectChannelId()).then(function () {
                         $log.log(' SingleRequestCtrl -setDirectMessageStaffById : saved');
+                        //remove order
+                        vm.unwatch();
+                        MessageService.removeDirectMessageById(AppGlobals.getDirectChannelId());
+                        AppGlobals.getDirectChannelId(null);
                         $state.go('orders', {channelId: AppGlobals.getVenueChannelId() });
                       }, function (error) {
                         //handle the error
@@ -97,6 +101,8 @@ angular.module('main')
                       $log.log(' SingleRequestCtrl -setDirectMessageStaffById : saved');
                        //stop watching message
                       vm.unwatch();
+                      MessageService.removeDirectMessageById(AppGlobals.getDirectChannelId());
+                      AppGlobals.getDirectChannelId(null);
                       $state.go('orders', {channelId: AppGlobals.getVenueChannelId() });
                     }, function (error) {
                       $log.log('Error:', error);

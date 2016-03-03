@@ -7,7 +7,6 @@ angular.module('main')
       $log.log('orders ', orders, ' vm ', vm);
       //exports
       vm.logIn = logIn;
-      vm.navigateToProfile = navigateToProfile;
       vm.cancelItem = cancelItem;
       vm.navigateTo = navigateTo;
       vm.acceptOrder = acceptOrder;
@@ -40,16 +39,13 @@ angular.module('main')
           $state.go('main');
         }
       }
-      function navigateToProfile () {
-
-      }
       function cancelItem () {
 
       }
       function navigateTo (str) {
         switch (str) {
           case 'home':
-            //do I care if they have processed an order TBT - MG
+            $state.go('dashboard', {uId: AppGlobals.getUserId()});
             break;
           case 'profile':
             //navigate to staff profile
