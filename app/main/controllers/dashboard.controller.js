@@ -4,9 +4,17 @@ angular.module('main')
       var vm = this;
       vm.isUserLoggedIn;
       //exports
-      vm.navigateToProfile = navigateToProfile;
+      vm.navigateTo = navigateTo;
       vm.logIn = logIn;
       vm.viewOrders = viewOrders;
+      function navigateTo (str) {
+        switch (str) {
+          case 'profile':
+            $state.go('staff', {uId: AppGlobals.getUserId()});
+            break;
+          default:
+        }
+      }
       function viewOrders () {
         $log.log('viewOrders ', AppGlobals.getVenueChannelId());
         $state.go('orders', {channelId: AppGlobals.getVenueChannelId()});
@@ -32,9 +40,6 @@ angular.module('main')
           vm.isUserLoggedIn = AppGlobals.isLoggedIn();
           $state.go('main');
         }
-      }
-      function navigateToProfile () {
-
       }
       function getVenueList () {
         StaffService.getVenueListById(AppGlobals.getUserId()).then(function (list) {

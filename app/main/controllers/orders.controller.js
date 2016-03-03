@@ -2,7 +2,6 @@
 angular.module('main')
     .controller('OrdersController', function ($scope, orders, $state, AppGlobals, LoginService, MessageService, $log) {
       var vm = this;
-      vm.isUserLoggedIn;
       vm.orders = orders;
       $log.log('orders ', orders, ' vm ', vm);
       //exports
@@ -48,7 +47,7 @@ angular.module('main')
             $state.go('dashboard', {uId: AppGlobals.getUserId()});
             break;
           case 'profile':
-            //navigate to staff profile
+            $state.go('staff', {uId: AppGlobals.getUserId()});
             break;
           default:
         }
