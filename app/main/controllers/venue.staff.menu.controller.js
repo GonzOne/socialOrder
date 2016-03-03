@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-    .controller('VenueStaffMenuController', function ($scope, $state, $ionicLoading, menu, AppGlobals, LoginService) {
+    .controller('VenueStaffMenuController', function ($scope, $state, $ionicLoading, menu, AppGlobals, VenueService, LoginService) {
       var vm = this;
       //exports
       vm.logIn = logIn;
@@ -42,8 +42,23 @@ angular.module('main')
           vm.isUserLoggedIn = AppGlobals.isLoggedIn();
         }
       }
+      function displayArray (menuObj) {
+        var menuArray = [];
+        Object.keys(menuObj).forEach(function (key) {
+          if (typeof(menuObj[key]) === 'object' ) {
+            menuArray.push(menuObj[key]);
+          }
+        });
+        return menuArray;
+      }
       $scope.$on('$ionicView.enter', function () {
         vm.isUserLoggedIn = AppGlobals.isLoggedIn();
+        vm.menu = menu;
+        vm.menuItems = displayArray(menu.menu);
+        vm.lastUpdate = menu.lastUpdate;
+        VenueService.getVenueName(menu.venue_id).then( function (str) {
+          vm.venueName = str;
+        });
 
       });
 
