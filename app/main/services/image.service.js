@@ -44,9 +44,25 @@ angular.module('main')
 
         return deferred.promise;
       };
+      function resizeImage (file, params) {
+        var resizedImage = file, fileSplit, filters;
+        if (typeof file === 'string') {
+          fileSplit = file.split('/image/upload');
+          if (fileSplit.length === 2 && params.width && params.height) {
+            filters = 'c_fill,w_' + params.width + ',h_' + params.height;
+            if (params.blur) {
+              filters += ',e_blur:500';
+            }
+            resizedImage = fileSplit[0] + '/image/upload/' + filters + fileSplit[1];
+          }
+        }
+        return resizedImage;
+
+      }
 
       return {
-        uploadImage: uploadImage
+        uploadImage: uploadImage,
+        resizeImage: resizeImage
       };
 
     });
