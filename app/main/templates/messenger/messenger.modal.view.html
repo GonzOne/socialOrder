@@ -4,7 +4,8 @@
 
         <div class="messsenger-profile">
             <div class="overflow-hidden">
-                <div class="profile-img-upload" ng-style="{'background-image': 'url({{messengerController.user.profilePicUrl}})'}" >
+                <!-- ng-style= "{'background-image': 'url(' + profileController.profilePic + ')'}" -->
+                <div class="profile-img" ng-style="{'background-image': 'url(' + messengerController.profilePic + ')'}">
                 </div>
                 <span class="messenger-title">{{messengerController.username}}</span>
             </div>
