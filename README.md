@@ -1,5 +1,6 @@
 # Social Order
 This project was generated with Generator-M-Ionic v1.5.0.
+The sole author of this code is M. Gonzalez.
 
 # Generator-M-Ionic v1.5.0
 
