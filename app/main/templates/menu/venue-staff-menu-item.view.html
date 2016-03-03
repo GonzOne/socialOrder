@@ -1,0 +1,32 @@
+<ion-view>
+    <div class="bar bar-subheader menu-subheader-shadow">
+        <button class="button icon button-clear button-royal ion-chevron-left" ng-click="venueStaffMenuItemController.navigateTo('menu')">
+        </button>
+        <h2 class="title align-left">{{venueStaffMenuItemController.typeLabel}}</h2>
+
+    </div>
+    <ion-content has-subheader>
+
+        <section class="mt-50">
+
+            <div class="list"  collection-repeat="item in venueStaffMenuItemController.items">
+                <ion-item>{{item.name}} <span class="menu-price">{{item.cost}}</span></ion-item>
+            </div>
+
+        </section>
+
+    </ion-content>
+    <ion-footer-bar class="bar bar-royal">
+        <div class="button-bar">
+            <button class="button button-clear" ng-click="venueStaffMenuItemController.navigateTo('dashboard')">
+                <i class="icon ion-home"></i>
+            </button>
+            <button class="button button-clear" ng-click="venueStaffMenuItemController.navigateTo('profile')">
+                <i class="icon ion-person"></i>
+            </button>
+            <button class="button button-clear" ng-click="venueStaffMenuItemController.logIn()">
+                <i ng-class="venueStaffMenuController.isUserLoggedIn ?  'icon ion-log-out' : 'icon ion-log-in'"></i>
+            </button>
+        </div>
+    </ion-footer-bar>
+</ion-view>
