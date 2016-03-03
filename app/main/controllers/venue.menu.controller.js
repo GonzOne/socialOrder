@@ -4,11 +4,6 @@ angular.module('main')
       var vm = this;
       vm.messengerCount = 0;
       vm.messengerOpen = false;
-      vm.isUserLoggedIn;
-      vm.menu;
-      vm.menuItems;
-      vm.lastUpdate;
-      vm.serverAccepted;
       //exports
       vm.logIn = logIn;
       vm.sendSms = sendSms;
@@ -46,7 +41,7 @@ angular.module('main')
         vm.messengerCount = 0;
         vm.messengerOpen = true;
         var templateUrl = './main/templates/messenger/messenger.modal.view.html';
-        AppModalService.show(templateUrl, 'MessengerController as messengerController', {username: AppGlobals.getStaffName()})
+        AppModalService.show(templateUrl, 'MessengerController as messengerController', {username: AppGlobals.getStaffName(), avatar: AppGlobals.getStaffAvatar()})
                 .then(function (result) {
                   $log.log('SingleRequestCtrl - displayMessenger - modal closing ', result);
                   vm.messengerOpen = false;
