@@ -170,6 +170,18 @@ angular.module('main', [
                   }
               ]
       }
+    })
+    .state('staff-category', {
+      url: '/staff-menu/category/:menuId?itemId',
+      templateUrl: 'main/templates/menu/venue-staff-menu-item.view.html',
+      controller: 'VenueStaffMenuItemController as venueStaffMenuItemController',
+      resolve: {
+        items: ['$stateParams', 'VenueService',
+               function ($stateParams, VenueService) {
+                 return VenueService.getMenuItemsById($stateParams.menuId, $stateParams.itemId);
+               }
+          ]
+      }
     });
 
   $urlRouterProvider.otherwise('/main');
