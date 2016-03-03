@@ -59,23 +59,24 @@ In order to run the app on a device, you'll need **Platform SDKs** for the platf
 You don't have to install the **Cordova CLI**. It's provided with the generator. The installer installs the Cordova CLI locally (not globally).
 
 ## Currently used Cordova plugins
-
-cordova-plugin-dialogs - http://ngcordova.com/docs/plugins/dialogs/ 
-cordova-plugin-inappbrowser - http://ngcordova.com/docs/plugins/inAppBrowser/
-com.ionic.keyboard - http://ngcordova.com/docs/plugins/keyboard/
-cordova-plugin-network-information - http://ngcordova.com/docs/plugins/network/
-cordova-plugin-splashscreen - http://ngcordova.com/docs/plugins/splashscreen/
-cordova-plugin-statusbar - http://ngcordova.com/docs/plugins/statusbar/
-cordova-plugin-vibration - http://ngcordova.com/docs/plugins/vibration/
-cordova-plugin-camera - http://ngcordova.com/docs/plugins/camera/
-cordova-plugin-contacts - http://ngcordova.com/docs/plugins/contacts/
-com.cordova.plugins.sms - http://ngcordova.com/docs/plugins/sms/
-com.synconset.imagepicker - http://ngcordova.com/docs/plugins/imagePicker/
-cordova-plugin-file - http://ngcordova.com/docs/plugins/file/
-cordova-plugin-file-transfer - http://ngcordova.com/docs/plugins/fileTransfer/
-cordova-plugin-geolocation - http://ngcordova.com/docs/plugins/geolocation/
-de.appplant.cordova.plugin.badge - http://ngcordova.com/docs/plugins/badge/
-cordova-plugin-nativeaudio - http://ngcordova.com/docs/plugins/nativeAudio/
+<ul>
+<li><a href="http://ngcordova.com/docs/plugins/dialogs/">cordova-plugin-dialogs</a></li>
+<li><a href="http://ngcordova.com/docs/plugins/inAppBrowser/">cordova-plugin-inappbrowser</a></li>
+<li><a href="http://ngcordova.com/docs/plugins/keyboard/">com.ionic.keyboard</a></li>
+<li><a href="http://ngcordova.com/docs/plugins/network/">cordova-plugin-network-information</a></li>
+<li><a href="http://ngcordova.com/docs/plugins/splashscreen/">cordova-plugin-splashscreen</a></li>
+<li><a href="http://ngcordova.com/docs/plugins/statusbar/">cordova-plugin-statusbar</a></li>
+<li><a href="http://ngcordova.com/docs/plugins/vibration/">cordova-plugin-vibration</a></li>
+<li><a href="http://ngcordova.com/docs/plugins/camera/">cordova-plugin-camera</a></li>
+<li><a href="http://ngcordova.com/docs/plugins/contacts/">cordova-plugin-contacts</a></li>
+<li><a href="http://ngcordova.com/docs/plugins/sms/">com.cordova.plugins.sms</a></li>
+<li><a href="http://ngcordova.com/docs/plugins/imagePicker/">com.synconset.imagepicker</a></li>
+<li><a href="http://ngcordova.com/docs/plugins/file/">cordova-plugin-file</a></li>
+<li><a href="http://ngcordova.com/docs/plugins/fileTransfer/">cordova-plugin-file-transfer</a></li>
+<li><a href="http://ngcordova.com/docs/plugins/geolocation/">cordova-plugin-geolocation</li></a>
+<li><a href="http://ngcordova.com/docs/plugins/badge/">de.appplant.cordova.plugin.badge</a></li>
+<li><a href="http://ngcordova.com/docs/plugins/nativeAudio/">cordova-plugin-nativeaudio</a></li>
+</ul>
 
 ## Generator
 Everything else you need will be installed using:
