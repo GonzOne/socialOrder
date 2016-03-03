@@ -31,7 +31,8 @@ i.cta-icon::before {
 .profile-edit-bar{
   text-align:right;
 }
-.profile-img-upload {
+.profile-img{
+
   position: relative;
   width: 120px;
   height: 120px;
@@ -43,13 +44,6 @@ i.cta-icon::before {
   cursor: none;
   @include border-radius(60px);
 
-  .mod-black-mask {
-    opacity: 0;
-    color: #fff;
-    text-align: center;
-    @include border-radius(60px);
-    @include transition(opacity .3s);
-  }
 }
 .profile-form {
   padding: 10px 20px 0px 20px;
