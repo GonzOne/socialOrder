@@ -158,6 +158,18 @@ angular.module('main', [
                 }
               ]
       }
+    })
+    .state('staff-menu', {
+      url: '/staff-menu/:menuId',
+      templateUrl: 'main/templates/menu/venue-menu-list.view.html',
+      controller: 'VenueStaffMenuController as venueStaffMenuController',
+      resolve: {
+        menu: ['$stateParams', 'VenueService',
+                  function ($stateParams, VenueService) {
+                    return VenueService.getMenuById($stateParams.menuId);
+                  }
+              ]
+      }
     });
 
   $urlRouterProvider.otherwise('/main');
