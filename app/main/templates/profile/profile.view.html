@@ -3,15 +3,8 @@
         <div class="profile-module">
 
                 <div class="overflow-hidden">
-                    <div class="profile-img-upload" ng-style="{'background-image': 'url({{userProfileCtrl.user.profilePicUrl}})'}" >
+                    <div class="profile-img" ng-style= "{'background-image': 'url(' + profileController.profilePic + ')'}">>
                     </div>
-                    <!--
-                    <div class="profile-img-upload" ng-style="{'background-image': 'url({{userProfileCtrl.user.profilePicUrl}})'}">
-                        <div class="mod-black-mask">
-                       <p class="mt-45" style="color: #fff; font-weight: 600;">Upload <i class="ion-ios-camera"></i></p>
-                        </div>
-                    </div>
-                    -->
                 </div>
 
 
@@ -19,13 +12,13 @@
 
         <div class="profile-cta-container">
             <div class="button-bar">
-                <button class="button button-icon" ng-click="userProfileCtrl.captureImage()">
+                <button class="button button-icon" ng-click="profileController.captureImage()">
                     <i class="cta-icon ion-ios-camera"></i>
                 </button>
-                <button class="button button-icon" ng-click="userProfileCtrl.selectImage()">
+                <button class="button button-icon" ng-click="profileController.selectImage()">
                     <i class="cta-icon ion-image"></i>
                 </button>
-                <button ng-disabled="!userProfileCtrl.profilePicAdded" class="button button-icon icon" ng-click="userProfileCtrl.startUpload()">
+                <button ng-disabled="!userProfileCtrl.profilePicAdded" class="button button-icon icon" ng-click="profileController.startUpload()">
                     <i class="cta-icon ion-upload"></i>
                 </button>
             </div>
