@@ -1,7 +1,32 @@
-<ion-view title="SOCIAL ORDER">
-    <ion-content>
+<ion-view>
+    <div class="bar bar-subheader menu-subheader-shadow">
+        <h2 class="title align-center">{{venueStaffMenuController.venueName}} - Menu</h2>
+    </div>
+    <ion-content has-subheader>
 
+        <section class="mt-50">
+            <span class="last-update-text">last updated {{venueStaffMenuController.lastUpdate}}</span>
+            <ion-list>
+                <ion-item collection-repeat="item in venueStaffMenuController.menuItems | orderBy:'priority'" class="item-royal item-icon-right so-animate-repeat" ui-sref="staff-category({menuId:item.menuId, itemId:item.itemId })">
+                    {{item.displayName}}
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+            </ion-list>
+
+        </section>
     </ion-content>
-    <ion-footer-bar>
+    <ion-footer-bar class="bar bar-royal">
+        <div class="button-bar">
+            <button class="button button-clear" ng-click="venueStaffMenuController.navigateTo('dashboard')">
+                <i class="icon ion-home"></i>
+            </button>
+            <button class="button button-clear" ng-click="venueStaffMenuController.navigateTo('profile')">
+                <i class="icon ion-person"></i>
+            </button>
+            <button class="button button-clear" ng-click="venueStaffMenuController.logIn()">
+                <i ng-class="venueStaffMenuController.isUserLoggedIn ?  'icon ion-log-out' : 'icon ion-log-in'"></i>
+            </button>
+        </div>
     </ion-footer-bar>
+
 </ion-view>
