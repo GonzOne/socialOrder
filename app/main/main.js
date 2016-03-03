@@ -146,6 +146,18 @@ angular.module('main', [
                   }
                ]
       }
+    })
+    .state('staff', {
+      url: '/staff/:uId',
+      templateUrl: 'main/templates/staff/staff.view.html',
+      controller: 'StaffController as staffController',
+      resolve: {
+        staff: ['$stateParams', 'ProfileService',
+                function ($stateParams, ProfileService) {
+                  return ProfileService.getStaffProfileById($stateParams.uId);
+                }
+              ]
+      }
     });
 
   $urlRouterProvider.otherwise('/main');
