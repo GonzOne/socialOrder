@@ -1,10 +1,8 @@
 'use strict';
 angular.module('main')
-    .controller('OrderDetailController', function ($scope, $state, $ionicLoading, $cordovaNativeAudio, AppModalService, MessageService, ProfileService, CartService, VenueService, userOrder, DateFormatter, AppGlobals, $log) {
+    .controller('OrderDetailController', function ($scope, $state, $ionicLoading, $cordovaNativeAudio, AppModalService, MessageService, ProfileService, CartService, ImageService, VenueService, userOrder, DateFormatter, AppGlobals, $log) {
       var vm = this;
-      vm.orders;
       vm.messengerCount = 0;
-      $log.log('userOrder ', userOrder, 'vm ', vm);
       //exports
       vm.cancelOrder = cancelOrder;
       vm.orderComplete = orderComplete;
@@ -36,7 +34,7 @@ angular.module('main')
       function displayMessenger () {
         vm.messengerCount = 0;
         var templateUrl = './main/templates/messenger/messenger.modal.view.html';
-        AppModalService.show(templateUrl, 'MessengerController as messengerController', {username: vm.username})
+        AppModalService.show(templateUrl, 'MessengerController as messengerController', {username: vm.username, avatar: vm.profilePic})
                 .then(function (result) {
                   $log.log('SingleRequestCtrl - displayMessenger - modal closing ', result);
                 }, function (err) {
@@ -205,12 +203,26 @@ angular.module('main')
           $log.log('Error:', error);
         });
       }
+      function getUserData () {
+
+        ProfileService.getPatronProfileById(userOrder.uId)
+              .then(function (data) {
+                $log.log(data);
+                vm.username = data.firstName;
+                vm.profilePic = vm.profilePic = ImageService.resizeImage(data.profilePicUrl, {
+                  width: 600,
+                  height: 400,
+                  blur: true
+                });
+              }, function (err) {
+                $log.log('getUserData error ', err);
+              });
+      }
       $scope.$on('$ionicView.enter', function () {
+        getUserData();
         CartService.setAcceptedOrder(userOrder);
         AppGlobals.setDirectChannelId(userOrder.uChannel);
         setDirectMessagingData();
-        vm.username = userOrder.uName;
-        vm.profilePicUrl = userOrder.uAvatar;
         vm.orders = userOrder.order;
         removeItemFromVenueOrders();
         sendStaffInfo();
