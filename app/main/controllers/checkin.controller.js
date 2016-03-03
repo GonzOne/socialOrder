@@ -11,6 +11,7 @@ angular.module('main')
         var selectedVenue = vm.list[indx];
         $log.log('set venue ', selectedVenue);
         AppGlobals.setVenueId(selectedVenue.key);
+        AppGlobals.setMenuId(selectedVenue.menu_id);
         $log.log('channel_id ', selectedVenue.channel_id);
         if (selectedVenue.channel_id) {
           AppGlobals.setVenueChannelId(selectedVenue.channel_id);
