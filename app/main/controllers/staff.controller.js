@@ -1,15 +1,23 @@
 'use strict';
 angular.module('main')
-    .controller('StaffController', function ($scope, $state, $ionicLoading, $ionicHistory, $cordovaCamera, $cordovaImagePicker, staff, AppGlobals, LoginService, ImageService, $log) {
+    .controller('StaffController', function ($scope, $state, $ionicLoading, $cordovaCamera, $cordovaImagePicker, staff, AppGlobals, LoginService, ImageService, $log) {
       var vm = this;
       //exports
       vm.edit = edit;
       vm.logIn = logIn;
-      vm.goBack = goBack;
       vm.captureImage = captureImage;
       vm.selectImage = selectImage;
       vm.startUpload = startUpload;
+      vm.navigateTo = navigateTo;
 
+      function navigateTo (str) {
+        switch (str) {
+          case 'dashboard':
+            $state.go('dashboard', {uId: AppGlobals.getUserId()});
+            break;
+          default:
+        }
+      }
       //refactor:  to image service
       function captureImage () {
         var pictureSource = navigator.camera.PictureSourceType.CAMERA;
@@ -61,9 +69,6 @@ angular.module('main')
         }, function (error) {
           $log.log('uploadImage', error);
         });
-      }
-      function goBack () {
-        $ionicHistory.goBack();
       }
       function edit () {
         vm.editActive = !vm.editActive;
