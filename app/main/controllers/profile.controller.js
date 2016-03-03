@@ -1,10 +1,7 @@
 'use strict';
 angular.module('main')
-    .controller('ProfileController', function ($scope, $state, $ionicLoading, $ionicHistory, profile, AppGlobals, LoginService, $log) {
+    .controller('ProfileController', function ($scope, $state, $ionicLoading, $ionicHistory, profile, AppGlobals, LoginService, ImageService, $log) {
       var vm = this;
-      vm.user;
-      vm.editActive;
-      vm.isUserLoggedIn;
       //exports
       vm.edit = edit;
       vm.logIn = logIn;
@@ -44,6 +41,11 @@ angular.module('main')
       $scope.$on('$ionicView.enter', function () {
         vm.isUserLoggedIn = AppGlobals.isLoggedIn();
         vm.user = profile;
+        vm.profilePic = ImageService.resizeImage(vm.user.profilePicUrl, {
+          width: 600,
+          height: 400,
+          blur: true
+        });
         vm.editActive = false;
       });
 
