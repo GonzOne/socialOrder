@@ -77,6 +77,7 @@ You don't have to install the **Cordova CLI**. It's provided with the generator.
 <li><a href="http://ngcordova.com/docs/plugins/geolocation/">cordova-plugin-geolocation</li></a>
 <li><a href="http://ngcordova.com/docs/plugins/badge/">de.appplant.cordova.plugin.badge</a></li>
 <li><a href="http://ngcordova.com/docs/plugins/nativeAudio/">cordova-plugin-nativeaudio</a></li>
+<li><a href="http://ngcordova.com/docs/plugins/localNotification/">cordova-plugin-app-event</a></li>
 </ul>
 
 ## Generator
