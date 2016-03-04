@@ -28,12 +28,25 @@ angular.module('main', [
   $ionicConfigProvider.views.transition('none');
 })
 
-.run(function ($ionicPlatform, AppGlobals, $log) {
+.run(function ($ionicPlatform, $ionicPopup, AppGlobals, $cordovaBadge, $log) {
 
 
   $ionicPlatform.ready(function () {
     $log.log('$ionicPlatform is ready ');
+    if (window.Connection) {
 
+      if (navigator.connection.type === window.Connection.NONE) {
+        $ionicPopup.confirm({
+          title: 'NETWORK ERROR',
+          content: 'Please check your internet connection before relaunching the application.'
+        })
+        .then(function (result) {
+          if (!result) {
+            ionic.Platform.exitApp();
+          }
+        });
+      }
+    }
     if (window.cordova) {
       AppGlobals.setWebView(true);
     }
@@ -50,6 +63,17 @@ angular.module('main', [
       });
     }
 
+  });
+  $ionicPlatform.on('resume', function () {
+
+    if (AppGlobals.getBadge()) {
+      $cordovaBadge.clear().then( function () {
+        $log.log('onResume - I have permission to clear');
+        AppGlobals.setBadge(false);
+      }, function (err) {
+        $log.log('onResume - I do not have permission to clear', err);
+      });
+    }
   });
 
 })
