@@ -20,6 +20,39 @@
                 </button>
             </div>
         </div>
+        <section class="profile">
+            <div class="profile-edit-bar">
+                <button ng-class="profileController.editActive ? 'button button-clear button-royal' : 'button button-clear button-stabel'"  ng-click="staffController.edit()">
+                    <i class="icon ion-edit"></i>
+                </button>
+            </div>
+            <div class="list">
+                <div class="profile-form">
+                    <span><strong>FIRST NAME</strong></span>
+                    <input name="first_name" type="text" ng-model="staffController.user.firstName" ng-disabled="!staffController.editActive">
+                </div>
+                <hr class="profile-hr text-align-left">
+
+                <div class="profile-form">
+                    <span><strong>LAST NAME</strong></span>
+                    <input name="lastname" type="email" ng-model="staffController.user.lastName" ng-disabled="!staffController.editActive">
+                </div>
+                <hr class="profile-hr">
+
+                <div class="profile-form">
+                    <span><strong>EMAIL</strong></span>
+                    <input name="user_email" type="email" ng-model="staffController.user.email" ng-disabled="!staffController.editActive">
+                </div>
+                <hr class="profile-hr">
+            </div>
+            <div class="login-button-container mt-20">
+                <button class="button button-block button-royal" ng-disabled="!staffController.editActive">
+                    SAVE
+                </button>
+            </div>
+
+
+        </section>
     </ion-content>
     <ion-footer-bar class="bar bar-royal">
         <div class="button-bar">
