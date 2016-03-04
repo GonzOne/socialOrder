@@ -19,6 +19,7 @@ angular.module('main')
       var orderStatus = null;
       var staffName = null;
       var staffAvatar = null;
+      var badge = false;
 
       return {
         isWebView: function () { return isWebView;},
@@ -58,6 +59,8 @@ angular.module('main')
         getStaffName: function () { return  staffName;},
         setStaffAvatar: function (val) { staffAvatar = val;},
         getStaffAvatar: function () { return staffAvatar;},
+        getBadge: function () { return badge; },
+        setBadge: function (bool) { badge = bool; },
         logOut: function () {
           uid = null;
           uName = null;
@@ -75,6 +78,7 @@ angular.module('main')
           directChannelId = null;
           staffName = null;
           staffAvatar = null;
+          badge = false;
         },
       };
     });
