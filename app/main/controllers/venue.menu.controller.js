@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-    .controller('VenueMenuController', function ($scope, $state, $timeout, $ionicLoading, $ionicPopup, AppGlobals, CartService, AppModalService, LoginService, SmsService, MessageService, VenueService, menu, $cordovaNativeAudio, $cordovaVibration, $log) {
+    .controller('VenueMenuController', function ($scope, $state, $timeout, $ionicLoading, $ionicPopup, AppGlobals, CartService, AppModalService, LoginService, SmsService, MessageService, VenueService, menu, $cordovaNativeAudio, $cordovaLocalNotification, $cordovaVibration, $cordovaBadge, $log) {
       var vm = this;
       vm.messengerCount = 0;
       vm.messengerOpen = false;
@@ -115,85 +115,159 @@ angular.module('main')
         vm.directMessage = MessageService.getDirectMessageById(AppGlobals.getDirectChannelId());
         vm.directMessage.$loaded().then(function () {
           vm.unwatch = vm.directMessage.$watch(function () {
-            if (!vm.serverAccepted) {
 
-              if (vm.directMessage.status === 'accepted' && vm.isWebView) {
-                $ionicLoading.hide();
-                vm.serverAccepted = true;
-                AppGlobals.setOrderStatus('accepted');
-                AppGlobals.setStaffName(vm.directMessage.staffName);
-                AppGlobals.setStaffAvatar(vm.directMessage.staffAvatar);
-                CartService.setAcceptedOrder(CartService.getPendingOrder());
-                CartService.clearPendingOrder();
-                $cordovaVibration.vibrate(100);
-                $cordovaNativeAudio.play('accept');
-              }
-              /*
-              var obj = {
-                photo: vm.directMessage.staffAvatar,
-                username: vm.directMessage.staffName,
-              };
+            $log.log('vm.directMessage', vm.directMessage);
+            $log.log('vm.directMessage : status', vm.directMessage.status);
 
-              displayServer(obj); show another ionic loading
-              */
-              $ionicLoading.show({
-                template: 'Order accepted!',
-                duration: 2000
-              });
+            switch (vm.directMessage.status) {
+              case 'accepted':
+                if (!vm.serverAccepted) {
+                  vm.serverAccepted = true;
+                  $ionicLoading.hide();
+                  $ionicLoading.show({
+                    template: 'Order accepted!',
+                    duration: 2000
+                  });
 
-            } else if (vm.directMessage.status === 'canceled' ) {
+                  AppGlobals.setOrderStatus('accepted');
+                  AppGlobals.setStaffName(vm.directMessage.staffName);
+                  AppGlobals.setStaffAvatar(vm.directMessage.staffAvatar);
+                  CartService.setAcceptedOrder(CartService.getPendingOrder());
+                  CartService.clearPendingOrder();
 
-              if (vm.isWebView) {
-                $log.log('play sound');
-                $cordovaVibration.vibrate(100);
-                $cordovaNativeAudio.play('accept');
-              }
-              CartService.clearAcceptedOrder();
-              AppGlobals.setOrderStatus(null);
-              vm.hasOrders = false;
-              //displayStatusMessage(vm.directMessage.status, vm.directMessage.statusMsg);
+                  if (vm.isWebView) {
+                    $cordovaVibration.vibrate(100);
+                    $cordovaNativeAudio.play('accept');
+                    $cordovaLocalNotification.schedule({
+                      id: 1,
+                      text: 'Your items will be with you shortly!',
+                      title: 'Order Status - ACCEPTED'
+                    }).then(function () {
+                      $log.log('The notification has been set');
+                    });
+                    $cordovaBadge.hasPermission().then(function () {
+                      $cordovaBadge.set(1).then( function () {
+                        $log.log('$cordovaBadge : badge set ! ');
+                        AppGlobals.setBadge(true);
+                      }, function (err) {
+                        $log.log('$cordovaBadge ', err);
+                        AppGlobals.setBadge(false);
+                      });
+                    });
+                  }
+                }
+                if (vm.directMessage.messages) {
+                  $log.log('we got messages');
+                  var msgObj = vm.directMessage.messages;
+                  var lastObj = msgObj[Object.keys(msgObj)[Object.keys(msgObj).length - 1]];
+                  if (lastObj) {
+                    $log.log('vm.directMessage.messages array ', lastObj.role);
+                    if (lastObj.role === 2) {
+                      if (vm.isWebView) {
+                        $log.log('play sound');
+                        $cordovaNativeAudio.play('notification');
+                        $cordovaLocalNotification.schedule({
+                          id: 4,
+                          text: 'You have a message from ' + vm.venueName,
+                          title: 'Order Status - MESSAGE'
+                        }).then(function () {
+                          $log.log('The notification has been set');
+                        });
+                        $cordovaBadge.hasPermission().then(function () {
+                          $cordovaBadge.increase(1).then(function () {
+                            $log.log('$cordovaBadge : badge set ! ');
+                            AppGlobals.setBadge(true);
+                          }, function (err) {
+                            $log.log('$cordovaBadge ', err);
+                            AppGlobals.setBadge(false);
+                          });
+                        });
 
-              $ionicLoading.show({
-                template: 'ORDER CANCELED<br>' + vm.directMessage.statusMsg,
-                duration: 6000
-              });
-              vm.unwatch();
-              clearDirectMessage();
-              return;
+                      }
+                      $log.log('vm.messengerOpen ', vm.messengerOpen);
+                      if (!vm.messengerOpen) {
+                        vm.messengerCount++;
+                      }
+                      $log.log('vm.messengerCount ', vm.messengerCount);
+                    }
+                  }
+                }
+                break;
+              case 'canceled':
+                $ionicLoading.show({
+                  template: 'ORDER CANCELED<br>' + vm.directMessage.statusMsg,
+                  duration: 6000
+                });
 
-            } else if (vm.directMessage.status === 'completed') {
-              $ionicLoading.show({
-                template: 'ORDER COMPLETED<br>' + vm.directMessage.statusMsg,
-                duration: 6000
-              });
-              if (vm.isWebView) {
-                $log.log('play sound');
-                $cordovaVibration.vibrate(100);
-                $cordovaNativeAudio.play('accept');
-              }
-
-              vm.unwatch();
-              AppGlobals.setOrderStatus(null);
-              vm.hasOrders = false;
-              clearDirectMessage();
-              return;
-
-            }
-            var msgObj = vm.directMessage.messages;
-            var lastObj = msgObj[Object.keys(msgObj)[Object.keys(msgObj).length - 1]];
-            if (lastObj) {
-              $log.log('vm.directMessage.messages array ', lastObj.role);
-              if (lastObj.role === 2) {
                 if (vm.isWebView) {
                   $log.log('play sound');
-                  $cordovaNativeAudio.play('notification');
+                  $cordovaVibration.vibrate(100);
+                  $cordovaNativeAudio.play('accept');
+                  $cordovaLocalNotification.schedule({
+                    id: 2,
+                    text: vm.directMessage.statusMsg,
+                    title: 'Order Status - CANCELED'
+                  }).then(function () {
+                    $log.log('The notification has been set');
+                  });
+                  $cordovaBadge.hasPermission().then(function () {
+                    $cordovaBadge.increase(1).then(function () {
+                      $log.log('$cordovaBadge : badge set ! ');
+                      AppGlobals.setBadge(true);
+                    }, function (err) {
+                      $log.log('$cordovaBadge ', err);
+                      AppGlobals.setBadge(false);
+                    });
+                  });
                 }
-                $log.log('vm.messengerOpen ', vm.messengerOpen);
-                if (!vm.messengerOpen) {
-                  vm.messengerCount++;
+
+                vm.unwatch();
+                CartService.clearAcceptedOrder();
+                AppGlobals.setOrderStatus(null);
+                vm.hasOrders = false;
+                vm.serverAccepted = false;
+                if (vm.directMessage.messages) {
+                  clearDirectMessage();
                 }
-                $log.log('vm.messengerCount ', vm.messengerCount);
-              }
+
+                break;
+              case 'completed':
+                $log.log('WTF');
+                $ionicLoading.show({
+                  template: 'ORDER COMPLETED<br>' + vm.directMessage.statusMsg,
+                  duration: 6000
+                });
+
+                if (vm.isWebView) {
+                  $cordovaVibration.vibrate(100);
+                  $cordovaNativeAudio.play('accept');
+                  $cordovaLocalNotification.schedule({
+                    id: 3,
+                    text: vm.directMessage.statusMsg,
+                    title: 'Order Status - COMPLETED'
+                  }).then(function () {
+                    $log.log('The notification has been set');
+                  });
+                  $cordovaBadge.hasPermission().then(function () {
+                    $cordovaBadge.increase(1).then(function () {
+                      $log.log('$cordovaBadge : badge set ! ');
+                      AppGlobals.setBadge(true);
+                    }, function (err) {
+                      $log.log('$cordovaBadge ', err);
+                      AppGlobals.setBadge(false);
+                    });
+                  });
+                }
+
+                vm.unwatch();
+                AppGlobals.setOrderStatus(null);
+                vm.hasOrders = false;
+                vm.serverAccepted = false;
+                if (vm.directMessage.messages) {
+                  clearDirectMessage();
+                }
+                break;
+              default:
             }
 
           });
@@ -203,8 +277,8 @@ angular.module('main')
       function clearDirectMessage () {
         $log.log('orderCtrl - clearDirectMessage', AppGlobals.getDirectChannelId());
         MessageService.removeDirectMessageById(AppGlobals.getDirectChannelId());
+        vm.messengerCount = 0;
         vm.directMessage = null;
-        vm.serverAccepted = false;
         vm.server = {};
         AppGlobals.clearDirectChannelId();
       }
@@ -228,7 +302,7 @@ angular.module('main')
         vm.menu = menu;
         vm.menuItems = displayArray(menu.menu);
         vm.lastUpdate = menu.lastUpdate;
-
+        vm.serverAccepted = false;
         VenueService.getVenueName(menu.venue_id).then( function (str) {
           vm.venueName = str;
         });
