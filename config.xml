@@ -21,8 +21,9 @@
   <plugin name="cordova-plugin-file" spec="~4.1.1"/>
   <plugin name="cordova-plugin-file-transfer" spec="~1.5.0"/>
   <plugin name="cordova-plugin-geolocation" spec="~2.1.0"/>
-  <plugin name="de.appplant.cordova.plugin.badge" spec="~0.7.1"/>
+  <plugin name="de.appplant.cordova.plugin.badge" spec="~0.7.2"/>
   <plugin name="cordova-plugin-nativeaudio" spec="~3.0.6"/>
+  <plugin name="cordova-plugin-app-event" spec="~1.2.0"/>
   <access origin="*"/>
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
