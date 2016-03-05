@@ -41,6 +41,11 @@ i.close-icon::before {
   color:$dark;
   z-index:999;
   filter:alpha(opacity=60);
+  @media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 568px) {
+    left:70%;
+  }
 }
 .checkout-order {
   margin-top:20px;
