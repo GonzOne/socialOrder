@@ -69,5 +69,8 @@ angular.module('main')
         vm.typeLabel =  items.displayName;
         vm.items =  displayArray(items.items);
       });
-
+      $scope.$on('$ionicView.afterLeave', function () {
+        vm.items =  null;
+        vm.typeLabel = null;
+      });
     });
