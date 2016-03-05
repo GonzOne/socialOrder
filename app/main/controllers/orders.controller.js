@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-    .controller('OrdersController', function ($scope, orders, $state, AppGlobals, LoginService, MessageService, $log) {
+    .controller('OrdersController', function ($scope, orders, $state, AppGlobals, $cordovaVibration, $cordovaNativeAudio,  LoginService, MessageService, $log) {
       var vm = this;
       vm.orders = orders;
       $log.log('orders ', orders, ' vm ', vm);
@@ -10,6 +10,17 @@ angular.module('main')
       vm.navigateTo = navigateTo;
       vm.acceptOrder = acceptOrder;
 
+      ionic.Platform.ready(function () {
+        vm.isWebView = ionic.Platform.isWebView();
+        if (vm.isWebView) {
+          $cordovaNativeAudio.preloadSimple('notification', '/main/assets/audio/notification.wav')
+                    .then(function (msg) {
+                      $log.log('$cordovaNativeAudio.preloadSimple ', msg);
+                    }, function ( error) {
+                      $log.log('$cordovaNativeAudio.preloadSimple ', error);
+                    });
+        }
+      });
 
       function acceptOrder (indx) {
         var msg = vm.orders[indx];
@@ -52,7 +63,19 @@ angular.module('main')
           default:
         }
       }
+      function watchOrders () {
+        vm.unwatch = vm.orders.$watch(function () {
+          if (vm.isWebView) {
+            $cordovaVibration.vibrate(100);
+            $cordovaNativeAudio.play('notification');
+          }
+        });
+      }
       $scope.$on('$ionicView.enter', function () {
         vm.isUserLoggedIn = AppGlobals.isLoggedIn();
+        watchOrders();
+      });
+      $scope.$on('$ionicView.beforeLeave', function () {
+        vm.unwatch();
       });
     });
