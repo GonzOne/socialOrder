@@ -39,7 +39,9 @@
                 <i class="icon ion-thumbsdown"></i>
             </button>
             <button class="button button-clear" ng-click="orderDetailController.displayMessenger()">
+                <span class="messenger-badge" ng-show="orderDetailController.messengerCount > 0">{{orderDetailController.messengerCount}}</span>
                 <i class="icon ion-chatbox"></i>
+
             </button>
             <button class="button button-clear" ng-click="orderDetailController.orderComplete()">
                 <i class="icon ion-thumbsup"></i>
