@@ -3,6 +3,7 @@
 $ionicons-font-path: "../assets/fonts" !default;
 $font-header: 'Cabin', 'Montserrat', Helvetica, Arial, sans-serif;
 $font-body: 'Lato', 'Montserrat', Helvetica, Arial, sans-serif;
+$fa-font-path:  "../assets/fonts" !default;
 
 * {
   -webkit-font-smoothing: antialiased;
@@ -14,7 +15,7 @@ p {
 }
 // Include all of Ionic
 @import "../../bower_components/ionic/scss/ionic";
-
+@import "../../bower_components/font-awesome/scss/font-awesome";
 @import "core/util";
 @import "core/animations";
 @import "core/customFunctions";
@@ -29,6 +30,7 @@ p {
 @import "partials/messenger";
 @import "partials/dashboard";
 @import "partials/orders";
+@import "partials/register";
 
 
 
