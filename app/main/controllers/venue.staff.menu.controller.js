@@ -37,7 +37,8 @@ angular.module('main')
         } else {
           LoginService.logOut();
           $ionicLoading.show({
-            template: '<ion-spinner class="spinner-light" icon="spiral"></ion-spinner><br>Logging Out..'
+            template: '<ion-spinner class="spinner-light" icon="spiral"></ion-spinner><br>Logging Out..',
+            duration: 2000
           });
           vm.isUserLoggedIn = AppGlobals.isLoggedIn();
         }
