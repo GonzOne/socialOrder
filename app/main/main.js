@@ -136,6 +136,11 @@ angular.module('main', [
               ]
       }
     })
+    .state('register', {
+      url: '/register',
+      templateUrl: 'main/templates/register/register.view.html',
+      controller: 'RegisterController as registerController',
+    })
     .state('orders', {
       url: '/orders/:channelId',
       templateUrl: 'main/templates/orders/orders.view.html',
