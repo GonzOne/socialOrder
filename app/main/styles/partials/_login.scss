@@ -23,14 +23,15 @@ i.login-close-icon::before {
     height:35px;
     transition:height 1s;
     -webkit-transition:height 1s;
+    border-bottom: 1px solid $light;
+    padding-bottom: 1.5em;
+    text-transform: uppercase;
   }
   span{
     color:$light;
   }
 }
-.login-hr{
-  width:90%;
-}
+
 .login-button-container{
   padding:15px;
 
