@@ -1,6 +1,6 @@
 'use strict';
 
-function SoProductBoxController ($log) {
+function SoProductBoxController () {
   var vm = this;
   vm.showComment = false;
   //export
@@ -8,7 +8,6 @@ function SoProductBoxController ($log) {
   vm.add = add;
   function toggle () {
     vm.showComment = !vm.showComment;
-    $log.log('toggle ', vm.showComment);
   }
   function add () {
     if (vm.quantity < vm.max) {
