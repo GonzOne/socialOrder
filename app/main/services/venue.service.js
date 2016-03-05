@@ -26,6 +26,7 @@ angular.module('main')
               }
             });
             deferred.resolve(list);
+            list = null;
           } else {
             deferred.reject();
           }
@@ -53,7 +54,6 @@ angular.module('main')
       var getMenuById = function (key) {
         $log.log('getMenuById : key -', key);
         var deferred = $q.defer();
-        //var list = [];
         var venueMenu = venueMenusRef.child(key);
         venueMenu.once('value', function (snapshot) {
 
@@ -72,7 +72,6 @@ angular.module('main')
       var getMenuItemsById = function (key, itemId) {
         $log.log('VenueService - getMenuItemsById : key ', key, ' itemId ', itemId);
         var deferred = $q.defer();
-        //var list = [];
         var venueMenuItems = venueMenusRef.child(key).child('menu').child(itemId);
         venueMenuItems.once('value', function (snapshot) {
           if (snapshot.val() !== null) {
@@ -135,7 +134,7 @@ angular.module('main')
             });
 
             deferred.resolve(list);
-
+            list = null;
           } else {
             $log.log('No items found');
             deferred.reject();
