@@ -3,7 +3,7 @@
         <div class="profile-module">
 
                 <div class="overflow-hidden">
-                    <div class="profile-img" ng-style= "{'background-image': 'url(' + profileController.profilePic + ')'}">>
+                    <div class="profile-img" ng-style= "{'background-image': 'url(' + profileController.profilePic + ')'}">
                     </div>
                 </div>
         </div>
@@ -11,13 +11,10 @@
         <div class="profile-cta-container">
             <div class="button-bar">
                 <button class="button button-icon" ng-click="profileController.captureImage()">
-                    <i class="cta-icon ion-ios-camera"></i>
+                    <i class="cta-icon-camera ion-ios-camera"></i>
                 </button>
                 <button class="button button-icon" ng-click="profileController.selectImage()">
                     <i class="cta-icon ion-image"></i>
-                </button>
-                <button ng-disabled="!profileController.profilePicAdded" class="button button-icon icon" ng-click="profileController.startUpload()">
-                    <i class="cta-icon ion-upload"></i>
                 </button>
             </div>
         </div>
