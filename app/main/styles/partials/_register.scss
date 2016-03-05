@@ -1,0 +1,250 @@
+.register-form{
+  margin-top:25px;
+  padding: 10px 20px 0px 20px;
+}
+input[type=text],
+input[type=url],
+input[type=tel],
+input[type=number],
+input[type=color],
+input[type=email],
+input[type=password]{
+  color: $royal;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid $royal;
+  padding-bottom: 0.5em;
+  text-transform:none;
+}
+
+input:focus {
+  color: $royal;
+}
+input::-webkit-input-placeholder {
+  color: $stable;
+  opacity: 1 !important;
+  text-transform: uppercase;
+}
+input:-moz-placeholder { /* Firefox 18- */
+  color: $stable;
+  text-transform: uppercase;
+
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+  color: $stable;
+  text-transform: uppercase;
+
+}
+
+input:-ms-input-placeholder {
+  color: $stable;
+  text-transform: uppercase;
+
+}
+
+input.dob-input-two{
+  border:solid 1px $royal;
+  padding:5px;
+  width:50px;
+}
+input.dob-input-four{
+  border:solid 1px $royal;
+  padding:5px;
+  width:65px;
+}
+select {
+
+  /* styling */
+  background-color: white;
+  border: thin solid $royal;
+  border-radius: 4px;
+  display: inline-block;
+  font: inherit;
+  line-height: 1.5em;
+  padding: 0.5em 3.5em 0.5em 1em;
+
+  /* reset */
+
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+label.dob{
+  margin-top:8px;
+  mrgin-left:0px;
+  margin-right:10px;
+  color:$light;
+}
+.profile-id{
+  background-color:$royal;
+  color:$light;
+  margin-top:20px;
+  .age-message-header{
+    font-weight:600;
+    font-size: 16px;
+    color: $light;
+    margin-top:5px;
+    margin-bottom:5px;
+    text-transform: uppercase;
+  }
+
+  .age-message-sub{
+    font-weight:600;
+    font-size: 14px;
+    color: $stable;
+  }
+  .gender-profile{
+    margin-top:20px;
+    ul {
+      width: 100%;
+      text-align: left;
+    }
+    label.radio-label{
+      position:relative;
+      top:-67px;
+      left:100px;
+    }
+    li {
+      width:100px;
+      display: inline-block; /* the key bit */
+      *display: inline; /* IE7 hack */
+      *zoom: 1; /* IE7 hack */
+    }
+    input.gender-radio{
+      visibility: hidden;
+    }
+
+    input.gender-radio:checked:after, input.gender-radio:after{
+      visibility: visible;
+      font-family: FontAwesome;
+      font-size:26px;
+      position: relative;
+      left: 70px;
+      top: -32px;
+      //height: 18px;
+      //width: 18px;
+      //position: relative;
+      //top: -5px;
+      //left: 0px;
+      //display: inline-block;
+    }
+
+    input.gender-radio:checked:after {
+      content: '\f058';
+      color:$light;
+      opacity:1;
+    }
+
+    input.gender-radio:after {
+      content: '\f058';
+      color:$stable;
+      opacity:0.5;
+
+    }
+
+    .id-photo-mod{
+      position:relative;
+      top:-45px;
+      .id-icon-camera::before {
+        padding:8px;
+        font-size: 46px;
+        color:$light;
+      }
+      label{
+        position:relative;
+        top:22px;
+        font-weight:600;
+      }
+    }
+  }
+
+}
+.terms-message-header{
+  font-weight:600;
+  font-size: 16px;
+  color: $royal;
+  margin-top:5px;
+  margin-bottom:5px;
+  text-transform: uppercase;
+
+}
+.terms-message-sub{
+  font-weight:600;
+  font-size: 14px;
+  color: $royal;
+
+}
+.terms-module{
+  label.terms-label{
+    position:relative;
+    top:-36px;
+    left:35px;
+  }
+  input.terms-checkbox{
+    visibility: hidden;
+  }
+
+  input.terms-checkbox:checked:after, input.terms-checkbox:after{
+    visibility: visible;
+    font-family: FontAwesome;
+    font-size:26px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+  }
+
+  input.terms-checkbox:checked:after {
+    content: '\f058';
+    color:$royal;
+  }
+
+  input.terms-checkbox:after {
+    content: '\f058';
+    color:$stable;
+
+  }
+
+}
+
+
+
+select.minimal {
+  background-image:
+  linear-gradient(45deg, transparent 50%, gray 50%),
+  linear-gradient(135deg, gray 50%, transparent 50%),
+  linear-gradient(to right, #ccc, #ccc);
+  background-position:
+  calc(100% - 20px) calc(1em + 2px),
+  calc(100% - 15px) calc(1em + 2px),
+  calc(100% - 2.5em) 0.5em;
+  background-size:
+  5px 5px,
+  5px 5px,
+  1px 1.5em;
+  background-repeat: no-repeat;
+  margin-right:10px;
+}
+
+select.minimal:focus {
+  background-image:
+  linear-gradient(45deg, $royal 50%, transparent 50%),
+  linear-gradient(135deg, transparent 50%, $royal 50%),
+  linear-gradient(to right, #ccc, #ccc);
+  background-position:
+  calc(100% - 15px) 1em,
+  calc(100% - 20px) 1em,
+  calc(100% - 2.5em) 0.5em;
+  background-size:
+  5px 5px,
+  5px 5px,
+  1px 1.5em;
+  background-repeat: no-repeat;
+  border-color: $royal;
+  outline: 0;
+}
+
