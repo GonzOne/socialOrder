@@ -152,6 +152,7 @@ angular.module('main')
       });
       $scope.$on('$ionicView.leave', function () {
         vm.venuesReady = false;
+        // need to unwatch messages
       });
 
     });
