@@ -1,12 +1,24 @@
 'use strict';
 angular.module('main')
-    .controller('DashboardController', function ($scope, $state, staff, AppModalService, LoginService, StaffService, VenueService, $ionicLoading, AppGlobals, $log) {
+    .controller('DashboardController', function ($scope, $state, staff, $cordovaNativeAudio, $cordovaVibration, AppModalService, LoginService, MessageService, StaffService, VenueService, $ionicLoading, AppGlobals, $log) {
       var vm = this;
       vm.isUserLoggedIn;
       //exports
       vm.navigateTo = navigateTo;
       vm.logIn = logIn;
       vm.viewOrders = viewOrders;
+      ionic.Platform.ready(function () {
+        $log.log('ionic.Platform.ready : web view ', AppGlobals.isWebView());
+        vm.isWebView = ionic.Platform.isWebView();
+        if (vm.isWebView) {
+          $cordovaNativeAudio.preloadSimple('notification', '/main/assets/audio/notification.wav')
+                    .then(function (msg) {
+                      $log.log('$cordovaNativeAudio.preloadSimple ', msg);
+                    }, function ( error) {
+                      $log.log('$cordovaNativeAudio.preloadSimple ', error);
+                    });
+        }
+      });
 
       function navigateTo (str) {
         switch (str) {
@@ -86,11 +98,36 @@ angular.module('main')
         $log.log(' $ionicView.enter AppGlobals.getVenueId() ', AppGlobals.getVenueId(), 'channel id ', AppGlobals.getVenueChannelId(), 'staff ', staff );
         AppGlobals.setUserName(staff.firstName);
         AppGlobals.setUserAvatar(staff.profilePicUrl);
-
+        $log.log(' Venue channel ID ', AppGlobals.getVenueChannelId());
+        vm.ordeCount = 0;
         if (AppGlobals.getVenueId() === null) {
           getVenueList();
         }
+        if (AppGlobals.getVenueChannelId()) {
+          watchOrders(AppGlobals.getVenueChannelId());
+        }
 
+      });
+      function watchOrders (channelId) {
+        var orders = MessageService.forVenueMessages(channelId);
+        orders.$loaded()
+              .then(function (data) {
+                vm.orderCount = data.length;
+                vm.unwatch = orders.$watch(function () {
+                  if (vm.isWebView) {
+                    $cordovaVibration.vibrate(100);
+                    $cordovaNativeAudio.play('notification');
+                  }
+                  vm.orderCount = data.length;
+                });
+
+              });
+      }
+      $scope.$on('venueChannel:updated', function (event, channelId) {
+        watchOrders(channelId);
+      });
+      $scope.$on('$ionicView.beforeLeave', function () {
+        vm.unwatch();
       });
 
     });
