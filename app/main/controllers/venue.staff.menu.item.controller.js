@@ -1,9 +1,10 @@
 'use strict';
 angular.module('main')
-    .controller('VenueStaffMenuItemController', function ($scope, $state, items, AppGlobals) {
+    .controller('VenueStaffMenuItemController', function ($scope, $state, $ionicLoading, items, AppGlobals, LoginService) {
       var vm = this;
       //exports
       vm.navigateTo = navigateTo;
+      vm.logIn = logIn;
 
       function navigateTo (str) {
         switch (str) {
@@ -19,7 +20,32 @@ angular.module('main')
           default:
         }
       }
+      function logIn () {
+        if (!AppGlobals.isLoggedIn()) {
+          LoginService.displayLogIn().then( function (res) {
+            switch (res) {
+              case 'signin-success':
+                AppGlobals.setLoggedIn(true);
+                vm.isUserLoggedIn = AppGlobals.isLoggedIn();
+                break;
+              case 'signup':
+                $state.go('signup');
+                break;
+              case 'password-reset':
+                $state.go('password_reset');
+                break;
+            }
+          });
 
+        } else {
+          LoginService.logOut();
+          $ionicLoading.show({
+            template: '<ion-spinner class="spinner-light" icon="spiral"></ion-spinner><br>Logging Out..',
+            duration: 2000
+          });
+          vm.isUserLoggedIn = AppGlobals.isLoggedIn();
+        }
+      }
       function displayArray (menuObj) {
         var menuArray = [];
         Object.keys(menuObj).forEach(function (key) {
