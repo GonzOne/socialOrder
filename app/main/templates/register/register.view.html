@@ -1,62 +1,107 @@
 <ion-view>
     <ion-content>
         <div class="profile-module">
-            <form ng-submit="confirmDogPhoto()">
-                <div class="overflow-hidden">
-                    <div class="profile-img-upload" ng-if="!userProfileCtrl.user.profilePicUrl" ng-style="{'background-image': 'url({{userProfileCtrl.user.profilePicUrl}})'}"">
-                    <div class="mod-black-mask">
-                        <p class="mt-45" style="color: #fff; font-weight: 600;">Upload <i class="ion-ios-camera"></i></p>
-                    </div>
-                </div>
-                <div class="profile-img-upload" ng-if="$parent.dog.profileImgUrl" ng-style="{'background-image': 'url({{$parent.dog.profileImgUrl}})'}" >
-                </div>
-        </div>
-        </form>
 
+            <div class="overflow-hidden">
+                <div class="profile-img" ng-style= "{'background-image': 'url(' + registerController.userProfile.profilePicUrl + ')'}">
+                </div>
+            </div>
         </div>
         <div class="profile-cta-container">
             <div class="button-bar">
-                <button class="button button-icon" ng-click="userProfileCtrl.captureImage()">
-                    <i class="cta-icon ion-ios-camera"></i>
+                <button class="button button-icon" ng-click="registerController.captureImage()">
+                    <i class="cta-icon-camera ion-ios-camera"></i>
                 </button>
-                <button class="button button-icon" ng-click="userProfileCtrl.selectImage()">
+                <button class="button button-icon" ng-click="registerController.selectImage()">
                     <i class="cta-icon ion-image"></i>
-                </button>
-                <button ng-disabled="!userProfileCtrl.profilePicAdded" class="button button-icon icon" ng-click="userProfileCtrl.startUpload()">
-                    <i class="cta-icon ion-upload"></i>
                 </button>
             </div>
         </div>
-        <section class="profile-form">
+        <section class="register-form">
 
             <div class="list">
                 <div class="form-input">
-                    <span><strong>FIRST NAME</strong></span>
-                    <input name="first_name" type="text" ng-model="profileController.user.email">
+                    <input name="first_name" placeholder="Your First name" type="text" ng-model="registerController.user.firstName">
                 </div>
-                <hr class="profile-hr text-align-left">
-
                 <div class="form-input">
-                    <span><strong>LAST NAME</strong></span>
-                    <input name="lastname" type="email" ng-model="profileController.user.email">
+                    <input name="lastname" placeholder="Your Last name" type="text" ng-model="registerController.user.lastName">
                 </div>
-                <hr class="profile-hr">
-
                 <div class="form-input">
-                    <span><strong>EMAIL</strong></span>
-                    <input name="user_email" type="email" ng-model="profileController.user.email">
+                    <input name="user_email" placeholder="email@company.com" type="email" ng-model="registerController.user.email">
                 </div>
-                <hr class="login-hr">
-
                 <div class="form-input">
-                    <span><strong>PASSWORD</strong></span>
-                    <input name = user_password" type="password" ng-model="profileController.user.password">
+                    <input name = user_password" placeholder="password" type="password" ng-model="registerController.user.password">
                 </div>
-                <hr class="login-hr">
+                <div class="profile-id">
+                    <div class="form-input">
+                        <div class="age-message-header">May we see some ID please?</div>
+                        <div class="age-message-sub">You look young for your age!<br>Please verify that you are 21, it's the law.</div>
+                    </div>
+                    <div class="form-input">
+                        <div class="row">
+                            <label class="dob">D.O.B</label>
+                            <div id="dob-month">
+                                <select class="minimal"name="month" id="month" ng-model="registerController.month" ng-options="m.name for m in registerController.months | validMonths:year" ng-change="registerController.updateDate('month')" required>
+                                    <option value='' disabled>Month</option>
+                                </select>
+                            </div>
+                            <div id="dob-year">
+                                <select class="minimal" name="year" id="year" ng-model="registerController.year" ng-options="y for y in registerController.years" ng-change="registerController.updateDate('year')" required>
+                                    <option value='' disabled>Year</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-input">
+                        <div class="gender-profile">
+                            <label>Gender</label>
+                            <ul>
+                                <li>
+                                    <input type="radio" class="gender-radio" id="profile-male" ng-model="colorValue" value="male">
+                                    <label class="radio-label" for="profile-male">Male</label>
+                                </li>
+                                <li>
+                                    <input type="radio" class="gender-radio" id="profile-female" ng-model="colorValue" value="female">
+                                    <label class="radio-label" for="profile-female">Female </label>
+                                </li>
+                                <li>
+
+                                </li>
+                            </ul>
+                           <div class="id-photo-mod">
+                               <button class="button button-clear icon id-icon-camera ion-ios-camera">
+                               </button>
+                               <label>Take a photo of your id (optional)</label>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-input">
+                <div class="terms-message-header">We keep your information private!</div>
+                <div class="terms-message-sub">Please review our terms and policies.</div>
+            </div>
+            <div class="form-input">
+                <div class="terms-module">
+                    <input type="checkbox" class="terms-checkbox" id="terms" ng-model="terms" ng-click="registerController.displayTerms()">
+                    <label class="terms-label" for="terms">Accept terms.</label>
+                </div>
+
             </div>
             <div class="login-button-container mt-20">
-                <button class="button button-block button-royal">
-                    SAVE
+                <button class="button button-block button-royal"
+                        ng-disabled="
+                        registerController.user.email.length===0 ||
+                        registerController.user.password.length===0  ||
+                        registerController.userProfile.firstName.length===0 ||
+                        registerController.userProfile.lasttName.length===0 ||
+                        registerController.userProfile.sex.length===0 ||
+                        registerController.userProfile.dateOfBirth.length===0 ||
+                        registerController.userProfile.profilePicUrl.length===0 ||
+                        !registerController.userProfile.terms"
+                        ng-click="registerController.createAcount()">
+                    CREATE ACCOUNT
                 </button>
             </div>
 
@@ -68,14 +113,8 @@
             <button class="button button-clear" ui-sref="main">
                 <i class="icon icon ion-location"></i>
             </button>
-            <button class="button button-clear" ui-sref="profile" ui-sref-active="active">
-                <i class="icon ion-person"></i>
-            </button>
             <button class="button button-clear" ui-sref="payment" ng-disabled="true">
                 <i class="icon ion-card"></i>
-            </button>
-            <button class="button button-clear" ng-click="profileController.logIn()">
-                <i ng-class="venuesController.isUserLoggedIn ?  'icon ion-log-out' : 'icon ion-log-in'"></i>
             </button>
         </div>
     </ion-footer-bar>
