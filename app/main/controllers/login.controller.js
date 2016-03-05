@@ -9,8 +9,12 @@ angular.module('main')
       //exports
       vm.login = login;
       vm.signup = signup;
+      vm.register = register;
       vm.resetPassword = resetPassword;
-
+      function register () {
+        $scope.closeModal('register');
+        $state.go('register');
+      }
       function login () {
         $log.log('LoginController  ', vm.user);
         $ionicLoading.show({
