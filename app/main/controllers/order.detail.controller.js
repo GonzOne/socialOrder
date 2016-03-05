@@ -1,8 +1,9 @@
 'use strict';
 angular.module('main')
-    .controller('OrderDetailController', function ($scope, $state, $ionicLoading, $cordovaNativeAudio, AppModalService, MessageService, ProfileService, CartService, ImageService, VenueService, userOrder, DateFormatter, AppGlobals, $log) {
+    .controller('OrderDetailController', function ($scope, $state, $ionicLoading, $cordovaNativeAudio, $cordovaVibration, AppModalService, MessageService, ProfileService, CartService, ImageService, VenueService, userOrder, DateFormatter, AppGlobals, $log) {
       var vm = this;
       vm.messengerCount = 0;
+      vm.messengerOpen = false;
       //exports
       vm.cancelOrder = cancelOrder;
       vm.orderComplete = orderComplete;
@@ -33,10 +34,12 @@ angular.module('main')
       }
       function displayMessenger () {
         vm.messengerCount = 0;
+        vm.messengerOpen = true;
         var templateUrl = './main/templates/messenger/messenger.modal.view.html';
         AppModalService.show(templateUrl, 'MessengerController as messengerController', {username: vm.username, avatar: vm.profilePic})
                 .then(function (result) {
                   $log.log('SingleRequestCtrl - displayMessenger - modal closing ', result);
+                  vm.messengerOpen = false;
                 }, function (err) {
                   $log.log('displayMessenger error ', err);
                 });
@@ -144,6 +147,8 @@ angular.module('main')
           if (inObj.status === 'completed') {
             ProfileService.archivePatronsOrder(order);
           }
+
+
         }, function (error) {
            //handle error
           $log.log('forDirectMessage : error ', error);
@@ -230,6 +235,9 @@ angular.module('main')
         vm.orders = userOrder.order;
         removeItemFromVenueOrders();
         sendStaffInfo();
+      });
+      $scope.$on('$ionicView.beforeLeave', function () {
+        vm.unwatch();
       });
 
     });
