@@ -33,6 +33,7 @@ angular.module('main')
               $log.log('child data ', childData );
             });
             deferred.resolve(list);
+            ist = null;
           } else {
             $log.log('No items found');
             deferred.reject();
