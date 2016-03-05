@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-    .factory('AppGlobals', function () {
+    .factory('AppGlobals', function ($rootScope) {
       var isWebView = null;
       var uid = null;
       var uName = null;
@@ -20,7 +20,6 @@ angular.module('main')
       var staffName = null;
       var staffAvatar = null;
       var badge = false;
-
       return {
         isWebView: function () { return isWebView;},
         setWebView: function (val) { isWebView = val;},
@@ -46,7 +45,10 @@ angular.module('main')
         getVenueFooterData: function () { return venueFooterData;},
         setChannelId: function (val) { channel = val;},
         getChannelId: function () { return channel;},
-        setVenueChannelId: function (val) { venueChannelId = val;},
+        setVenueChannelId: function (val) {
+          venueChannelId = val;
+          $rootScope.$broadcast('venueChannel:updated', venueChannelId);
+        },
         getVenueChannelId: function () { return venueChannelId;},
         setOrderId: function (val) { orderId = val;},
         getOrderId: function () { return orderId;},
