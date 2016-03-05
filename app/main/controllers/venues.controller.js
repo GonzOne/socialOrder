@@ -39,6 +39,10 @@ angular.module('main')
 
         } else {
           LoginService.logOut();
+          $ionicLoading.show({
+            template: '<ion-spinner class="spinner-light" icon="spiral"></ion-spinner><br>Logging Out..',
+            duration: 2000
+          });
           vm.isUserLoggedIn = AppGlobals.isLoggedIn();
         }
       }
@@ -52,6 +56,7 @@ angular.module('main')
                     $log.log('checkUserToken', data.role);
                     switch (data.role) {
                       case 2:
+                        $ionicLoading.hide();
                         $state.go('dashboard', {uId: AppGlobals.getUserId()});
                         break;
                       default:
