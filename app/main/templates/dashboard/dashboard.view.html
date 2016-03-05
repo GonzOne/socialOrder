@@ -5,7 +5,9 @@
     <ion-content>
         <section class="dashboard-button-menu mt-65">
             <button class="button button-block button-royal" ng-click="dashboardController.viewOrders()">
+
                 <strong>ORDERS</strong>
+                <span class="badge badge-light orders-badge">{{dashboardController.orderCount}}</span>
             </button>
             <button class="button button-block button-royal" ng-click="dashboardController.navigateTo('menu')">
                <strong>MENU</strong>
