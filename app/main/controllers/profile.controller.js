@@ -8,7 +8,6 @@ angular.module('main')
       vm.goBack = goBack;
       vm.captureImage = captureImage;
       vm.selectImage = selectImage;
-      vm.startUpload = startUpload;
       function captureImage () {
         var pictureSource = navigator.camera.PictureSourceType.CAMERA;
         var destinationType = navigator.camera.DestinationType.FILE_URI;
@@ -24,9 +23,11 @@ angular.module('main')
         $cordovaCamera.getPicture(options).then(function (imageData) {
           vm.imageSrc = imageData;
           vm.profilePicAdded = true;
+          uploadImage();
         }, function (err) {
           $log.log('getPicture', err);
         });
+        uploadImage();
       }
       //refactor - move into image service
       function selectImage () {
@@ -41,11 +42,10 @@ angular.module('main')
                 $log.log('getPictures', results[0]);
                 vm.imageSrc = results[0];
                 vm.profilePicAdded = true;
+                uploadImage();
               }, function (error) {
                 $log.log('getPictures', error);
               });
-      }
-      function startUpload () {
         uploadImage();
       }
       //refactor - add to imageService
@@ -89,7 +89,8 @@ angular.module('main')
         } else {
           LoginService.logOut();
           $ionicLoading.show({
-            template: '<ion-spinner class="spinner-light" icon="spiral"></ion-spinner><br>Logging Out..'
+            template: '<ion-spinner class="spinner-light" icon="spiral"></ion-spinner><br>Logging Out..',
+            duration: 2000
           });
           vm.isUserLoggedIn = AppGlobals.isLoggedIn();
         }
