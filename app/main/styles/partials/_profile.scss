@@ -53,26 +53,52 @@ i.cta-icon-camera::before {
 }
 .profile-form {
   padding: 10px 20px 0px 20px;
-  input{
-    margin-top:0px;
-    width:100%;
-    background-color:rgba(0, 0, 0, 0);
-    color:$dark;
-    border: none;
-    outline:none;
-    height:35px;
-    transition:height 1s;
-    -webkit-transition:height 1s;
-  }
 }
 
+input[type=text].profile-input,
+input[type=url].profile-input,
+input[type=tel].profile-input,
+input[type=number].profile-input,
+input[type=color].profile-input,
+input[type=email].profile-input,
+input[type=password].profile-input,{
+  color: $royal;
+  width:100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid $royal;
+  padding-bottom: 0.5em;
+  text-transform:none;
+}
 
-input:disabled {
+input.profile-input :focus {
+  color: $royal;
+}
+input.profile-input ::-webkit-input-placeholder {
+  color: $stable;
+  opacity: 1 !important;
+  text-transform: uppercase;
+}
+input.profile-input :-moz-placeholder {
+  color: $stable;
+  text-transform: uppercase;
+
+}
+
+input.profile-input ::-moz-placeholder {
+  color: $stable;
+  text-transform: uppercase;
+
+}
+
+input.profile-input :-ms-input-placeholder {
+  color: $stable;
+  text-transform: uppercase;
+
+}
+
+input.profile-input:disabled {
   background: $light;
   color:$stable
-}
-.profile-hr{
-  margin-top:-8px;
-  align:left;
-  width:90%;
 }
