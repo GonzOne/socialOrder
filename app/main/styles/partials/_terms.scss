@@ -1,0 +1,27 @@
+.terms-header{
+  text-align:center;
+  color:$royal;
+}
+.terms-privacy{
+  text-align:left;
+  padding:15px;
+  p.privacy{
+    text-indent: 50px;
+    line-height: 0.8;
+    color:$dark;
+  }
+
+}
+.terms-legal{
+  text-align:left;
+  padding:15px;
+  p.legal{
+    text-indent: 10px;
+    line-height: 0.8;
+    color:$dark;
+  }
+
+}
+hr.terms-rule{
+  color:$royal;
+}
