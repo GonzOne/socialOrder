@@ -74,7 +74,6 @@ angular.module('main')
           LoginService.displayLogIn().then( function (res) {
             switch (res) {
               case 'signin-success':
-                AppGlobals.setLoggedIn(true);
                 vm.isUserLoggedIn = AppGlobals.isLoggedIn();
                 break;
               case 'signup':
@@ -93,6 +92,7 @@ angular.module('main')
             duration: 2000
           });
           vm.isUserLoggedIn = AppGlobals.isLoggedIn();
+          $state.go('main');
         }
       }
       $scope.$on('$ionicView.enter', function () {
