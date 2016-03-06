@@ -27,21 +27,18 @@
                 <div class="list">
                     <div class="profile-form">
                         <span><strong>FIRST NAME</strong></span>
-                        <input name="first_name" type="text" ng-model="profileController.user.firstName" ng-disabled="!profileController.editActive">
+                        <input name="first_name" class="profile-input" type="text" ng-model="profileController.user.firstName" ng-disabled="!profileController.editActive">
                     </div>
-                    <hr class="profile-hr text-align-left">
 
                     <div class="profile-form">
                         <span><strong>LAST NAME</strong></span>
-                        <input name="lastname" type="email" ng-model="profileController.user.lastName" ng-disabled="!profileController.editActive">
+                        <input name="lastname" class="profile-input" type="email" ng-model="profileController.user.lastName" ng-disabled="!profileController.editActive">
                     </div>
-                    <hr class="profile-hr">
 
                     <div class="profile-form">
                         <span><strong>EMAIL</strong></span>
-                        <input name="user_email" type="email" ng-model="profileController.user.email" ng-disabled="!profileController.editActive">
+                        <input name="user_email" class="profile-input" type="email" ng-model="profileController.user.email" ng-disabled="!profileController.editActive">
                     </div>
-                    <hr class="profile-hr">
                 </div>
                 <div class="login-button-container mt-20">
                     <button class="button button-block button-royal" ng-disabled="!profileController.editActive">
