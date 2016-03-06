@@ -10,7 +10,7 @@
                         <span><strong>EMAIL</strong></span>
                         <input name="user_email" type="email" placeholder="ENTER YOUR EMAIL ADDRESS" minlength="5" maxlength="100" ng-model="loginController.user.email" required>
                     </div>
-                    <hr class="login-hr">
+
                     <div ng-messages="appLoginForm.user_email.$error" role="alert">
                         <div ng-message-exp="'required'">Please enter an email address</div>
                         <div ng-message-exp="['minlength', 'maxlength']">
@@ -23,7 +23,7 @@
                         <span><strong>PASSWORD</strong></span>
                         <input name = user_password" type="password" placeholder="ENTER YOUR PASSWORD" ng-model="loginController.user.password" required>
                     </div>
-                    <hr class="login-hr">
+
                     <div ng-messages="appLoginForm.user_password.$error" role="alert">
                         <div ng-message-exp="'required'">Please enter your password</div>
                     </div>
