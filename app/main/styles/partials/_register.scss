@@ -2,14 +2,33 @@
   margin-top:25px;
   padding: 10px 20px 0px 20px;
 }
-input[type=text],
-input[type=url],
-input[type=tel],
-input[type=number],
-input[type=color],
-input[type=email],
-input[type=password]{
+
+.error-message{
+  margin-left:16px;
+  font-size:12px;
+  color:red;
+}
+.gender-error-message{
+  margin-top:-10px;
+  margin-left:-5px;
+  font-size:12px;
+  color:red;
+}
+.terms-error-message{
+  margin-top:10px;
+  margin-left:15px;
+  font-size:12px;
+  color:red;
+}
+input[type=text].register-input,
+input[type=url].register-input,
+input[type=tel].register-input,
+input[type=number].register-input,
+input[type=color].register-input,
+input[type=email].register-input,
+input[type=password].register-input,{
   color: $royal;
+  width:100%;
   border: 0;
   outline: 0;
   background: transparent;
@@ -18,27 +37,27 @@ input[type=password]{
   text-transform:none;
 }
 
-input:focus {
+input.register-input :focus {
   color: $royal;
 }
-input::-webkit-input-placeholder {
+input.register-input ::-webkit-input-placeholder {
   color: $stable;
   opacity: 1 !important;
   text-transform: uppercase;
 }
-input:-moz-placeholder { /* Firefox 18- */
+input.register-input :-moz-placeholder {
   color: $stable;
   text-transform: uppercase;
 
 }
 
-input::-moz-placeholder {  /* Firefox 19+ */
+input.register-input ::-moz-placeholder {
   color: $stable;
   text-transform: uppercase;
 
 }
 
-input:-ms-input-placeholder {
+input.register-input :-ms-input-placeholder {
   color: $stable;
   text-transform: uppercase;
 
@@ -83,7 +102,7 @@ label.dob{
 .profile-id{
   background-color:$royal;
   color:$light;
-  margin-top:20px;
+  margin-top:10px;
   .age-message-header{
     font-weight:600;
     font-size: 16px;
@@ -99,15 +118,16 @@ label.dob{
     color: $stable;
   }
   .gender-profile{
-    margin-top:20px;
+
     ul {
       width: 100%;
       text-align: left;
     }
     label.radio-label{
       position:relative;
-      top:-67px;
-      left:100px;
+      top:-18px;
+      left:80px;
+      font-weight:600;
     }
     li {
       width:100px;
@@ -124,14 +144,8 @@ label.dob{
       font-family: FontAwesome;
       font-size:26px;
       position: relative;
-      left: 70px;
-      top: -32px;
-      //height: 18px;
-      //width: 18px;
-      //position: relative;
-      //top: -5px;
-      //left: 0px;
-      //display: inline-block;
+      left: 60px;
+      top: -25px;
     }
 
     input.gender-radio:checked:after {
@@ -149,7 +163,9 @@ label.dob{
 
     .id-photo-mod{
       position:relative;
-      top:-45px;
+      left:-15px;
+      margin-bottom:15px;
+      padding-bottom:15px;
       .id-icon-camera::before {
         padding:8px;
         font-size: 46px;
@@ -182,8 +198,8 @@ label.dob{
 .terms-module{
   label.terms-label{
     position:relative;
-    top:-36px;
-    left:35px;
+    top:8px;
+    left:25px;
   }
   input.terms-checkbox{
     visibility: hidden;
