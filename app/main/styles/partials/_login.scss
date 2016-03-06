@@ -13,20 +13,6 @@ i.login-close-icon::before {
 .form-input {
  //@include debugOutline(red,solid);
   padding: 10px 20px 0px 20px;
-  input{
-    margin-top:10px;
-    width:100%;
-    background-color:rgba(0, 0, 0, 0);
-    color:white;
-    border: none;
-    outline:none;
-    height:35px;
-    transition:height 1s;
-    -webkit-transition:height 1s;
-    border-bottom: 1px solid $light;
-    padding-bottom: 1.5em;
-    text-transform: uppercase;
-  }
   span{
     color:$light;
   }
