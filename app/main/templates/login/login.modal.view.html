@@ -8,7 +8,7 @@
                 <div class="list">
                     <div class="form-input">
                         <span><strong>EMAIL</strong></span>
-                        <input name="user_email" type="email" placeholder="ENTER YOUR EMAIL ADDRESS" minlength="5" maxlength="100" ng-model="loginController.user.email" required>
+                        <input name="user_email" class="login" type="email" placeholder="ENTER YOUR EMAIL ADDRESS" minlength="5" maxlength="100" ng-model="loginController.user.email" required>
                     </div>
 
                     <div ng-messages="appLoginForm.user_email.$error" role="alert">
@@ -21,7 +21,7 @@
 
                     <div class="form-input">
                         <span><strong>PASSWORD</strong></span>
-                        <input name = user_password" type="password" placeholder="ENTER YOUR PASSWORD" ng-model="loginController.user.password" required>
+                        <input name = user_password" class="login" type="password" placeholder="ENTER YOUR PASSWORD" ng-model="loginController.user.password" required>
                     </div>
 
                     <div ng-messages="appLoginForm.user_password.$error" role="alert">
