@@ -45,8 +45,8 @@ angular.module('main')
         }
         var obj = vm.items[index];
         CartService.addToOrder(obj);
-
         displayAddOrderConifrmation();
+        vm.isCartEmpty = CartService.isOrderEmpty();
       }
       function displayAddOrderConifrmation () {
         $ionicLoading.show({
@@ -68,9 +68,11 @@ angular.module('main')
       $scope.$on('$ionicView.enter', function () {
         vm.typeLabel =  items.displayName;
         vm.items =  displayArray(items.items);
+        vm.isCartEmpty = CartService.isOrderEmpty();
       });
       $scope.$on('$ionicView.afterLeave', function () {
         vm.items =  null;
         vm.typeLabel = null;
+
       });
     });
