@@ -119,7 +119,15 @@ angular.module('main')
       function listAllVenues () {
         $log.log('VenuesCtrl -  listAllVenues');
         var list = VenueService.getAllVenues();
-        vm.list = list;
+        var len = list.length;
+        var venues = [];
+        for (var i = 0; i < len; i++) {
+          $log.log(list[i]);
+          if ( list[i].active === 1) {
+            venues.push(list[i]);
+          }
+        }
+        vm.list = venues;
         vm.venuesReady = true;
       }
 
