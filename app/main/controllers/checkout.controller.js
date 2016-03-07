@@ -6,7 +6,13 @@ angular.module('main')
       vm.total;
       //exports
       vm.submitOrder = submitOrder;
+      vm.removeItem = removeItem;
 
+      function removeItem (index) {
+        vm.items.splice(index, 1);
+        vm.isCartEmpty = CartService.isOrderEmpty();
+        displayTotal(vm.items);
+      }
       function submitOrder () {
         $ionicLoading.show({
           template: '<ion-spinner class="spinner-light" icon="spiral"></ion-spinner><br>Submiting Order...'
