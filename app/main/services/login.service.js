@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-    .factory('LoginService', function ($q, TokenAuth, AppGlobals, Auth, AppModalService, $log) {
+    .factory('LoginService', function ($q, $state, TokenAuth, AppGlobals, Auth, AppModalService, $log) {
 
       var checkCredentials = function  () {
         var deferred = $q.defer();
@@ -32,6 +32,8 @@ angular.module('main')
         Auth.$unauth();
         TokenAuth.clearSession();
         AppGlobals.logOut();
+        $state.go('main');
+
       };
 
       return {
