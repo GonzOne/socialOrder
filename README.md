@@ -57,8 +57,8 @@ In order to compile and install the app on a device you need the following depen
   
 ##Code base
 ```bash
-git clone --depth 1 https://github.com/GonzOne/socialOrder.git
-cd sensor-app
+cd socialOrder # Install into a directory
+git clone https://github.com/GonzOne/socialOrder.git
 npm install # install node packages
 bower install # install bower packages
 gulp --cordova 'prepare' # install Cordova platforms and plugins
