@@ -71,6 +71,11 @@ gulp watch
 gulp
 ```
 
+## Platform SDKs
+In order to run the app on a device, you'll need **Platform SDKs** for the platforms and the versions you are developing for. If you just want to develop in the browser for now, no SDKs are needed. Head over to Cordova Documentation: [Platform Guides](http://cordova.apache.org/docs/en/dev/guide/platforms/index.html) or Cordova CLI: [Requirements](https://github.com/apache/cordova-cli/#requirements) for further instructions.
+#### Note
+You don't have to install the **Cordova CLI**. It's provided with the generator. The installer installs the Cordova CLI locally (not globally).
+
 #### Build, run on the device/emulators
 
 ```sh
@@ -89,13 +94,7 @@ gulp --cordova 'emulate ios --target=iPhone-6'
 ```
 
 
-
-## Platform SDKs
-In order to run the app on a device, you'll need **Platform SDKs** for the platforms and the versions you are developing for. If you just want to develop in the browser for now, no SDKs are needed. Head over to Cordova Documentation: [Platform Guides](http://cordova.apache.org/docs/en/dev/guide/platforms/index.html) or Cordova CLI: [Requirements](https://github.com/apache/cordova-cli/#requirements) for further instructions.
-#### Note
-You don't have to install the **Cordova CLI**. It's provided with the generator. The installer installs the Cordova CLI locally (not globally).
-
-## Currently used Cordova plugins
+## Social Order currently uses the following Cordova plugins
 <ul>
 <li><a href="http://ngcordova.com/docs/plugins/dialogs/">cordova-plugin-dialogs</a></li>
 <li><a href="http://ngcordova.com/docs/plugins/inAppBrowser/">cordova-plugin-inappbrowser</a></li>
