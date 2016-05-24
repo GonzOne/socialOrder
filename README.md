@@ -57,7 +57,7 @@ In order to compile and install the app on a device you need the following depen
   
 ##Code base
 ```bash
-git clone --depth 1 https://github.com/GonzOne/angular2-sensor-app.git
+git clone --depth 1 https://github.com/GonzOne/socialOrder.git
 cd sensor-app
 npm install # install node packages
 bower install # install bower packages
