@@ -115,11 +115,6 @@ gulp --cordova 'emulate ios --target=iPhone-6'
 <li><a href="http://ngcordova.com/docs/plugins/localNotification/">cordova-plugin-app-event</a></li>
 </ul>
 
-## Generator
-Everything else you need will be installed using:
-```sh
-npm install --global generator-m-ionic
-
 ## Questions?
 Contact Manuel Gonzalez @ design@stheory.com.
 
