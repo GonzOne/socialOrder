@@ -7,8 +7,7 @@ angular.module('main')
       vm.send  = send;
       vm.reasons = [
             { reason: 'Your drinks are ready at the bar.', value: 1},
-            { reason: 'Your drinks are in route.', value: 2},
-            { reason: 'I\'ll have your drinks to you shortly.', value: 3}
+            { reason: 'Your drinks are in route.', value: 2}
       ];
       function send () {
         var result;
