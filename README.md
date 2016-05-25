@@ -48,18 +48,53 @@ Development:
 
 Besides simply installing everything, I recommend having or obtaining a **fair knowledge** of the technologies, so you can understand what you are doing.
 
-## Node and dependencies
+## Start
+In order to compile and install the app on a device you need the following dependencies, please install before proceeding.
+## Dependencies
 - node & npm - http://nodejs.org/download/
-  - yo: `npm install --global yo` - http://yeoman.io/
   - gulp: `npm install --global gulp` - http://gulpjs.com/
   - bower: `npm install --global bower` - http://bower.io/
+  
+##Code base
+```bash
+cd socialOrder # Install into a directory
+git clone https://github.com/GonzOne/socialOrder.git
+npm install # install node packages
+bower install # install bower packages
+gulp --cordova 'prepare' # install Cordova platforms and plugins
+```
+
+## Run the application locally
+```sh
+gulp watch
+# add --no-open to avoid browser opening
+gulp
+```
 
 ## Platform SDKs
 In order to run the app on a device, you'll need **Platform SDKs** for the platforms and the versions you are developing for. If you just want to develop in the browser for now, no SDKs are needed. Head over to Cordova Documentation: [Platform Guides](http://cordova.apache.org/docs/en/dev/guide/platforms/index.html) or Cordova CLI: [Requirements](https://github.com/apache/cordova-cli/#requirements) for further instructions.
 #### Note
 You don't have to install the **Cordova CLI**. It's provided with the generator. The installer installs the Cordova CLI locally (not globally).
 
-## Currently used Cordova plugins
+#### Build, run on the device/emulators
+
+```sh
+# both implicitly run gulp build which builds the Ionic app into www/
+gulp --cordova 'run ios --device'
+gulp --cordova 'emulate ios'
+# run the version currently in the www/ folder, without a new build
+gulp --cordova 'run ios --device' --no-build
+# build Options
+gulp --cordova 'run ios --device' --minify --force-build
+# Use specific target (e.g. iPhone-6)
+gulp --cordova 'emulate ios --target=iPhone-6'
+# to list available targets on your machine, run:
+`./platforms/ios/cordova/lib/list-emulator-images`
+# these will need to be installed in Xcode before ready to use
+```
+
+
+## Social Order currently uses the following Cordova plugins
 <ul>
 <li><a href="http://ngcordova.com/docs/plugins/dialogs/">cordova-plugin-dialogs</a></li>
 <li><a href="http://ngcordova.com/docs/plugins/inAppBrowser/">cordova-plugin-inappbrowser</a></li>
@@ -79,11 +114,6 @@ You don't have to install the **Cordova CLI**. It's provided with the generator.
 <li><a href="http://ngcordova.com/docs/plugins/nativeAudio/">cordova-plugin-nativeaudio</a></li>
 <li><a href="http://ngcordova.com/docs/plugins/localNotification/">cordova-plugin-app-event</a></li>
 </ul>
-
-## Generator
-Everything else you need will be installed using:
-```sh
-npm install --global generator-m-ionic
 
 ## Questions?
 Contact Manuel Gonzalez @ design@stheory.com.
