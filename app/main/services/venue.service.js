@@ -4,7 +4,6 @@ angular.module('main')
     .factory('VenueService', function (KEYS, $q, $firebaseArray, $log) {
       var venueUri = KEYS.firebase + 'venues';
       var venueRef = new Firebase(venueUri);
-      var venues = $firebaseArray(venueRef);
 
       var venueMenusUri = KEYS.firebase + 'venue_menus';
       var venueMenusRef = new Firebase(venueMenusUri);
@@ -208,13 +207,31 @@ angular.module('main')
         });
         return deferred.promise;
       };
-
+      var getAllVenues = function () {
+        $log.log('getAllVenues :');
+        var deferred = $q.defer();
+        var list = [];
+        venueRef.once('value', function (snapshot) {
+          $log.log('snapshot ', snapshot);
+          if (snapshot.val() !== null) {
+            snapshot.forEach(function (childSnapshot) {
+              var childData = childSnapshot.val();
+              list.push(childData);
+            });
+            deferred.resolve(list);
+          } else {
+            $log.log('No items found');
+            deferred.reject();
+          }
+        });
+        return deferred.promise;
+      };
       return {
         getVenueName: getVenueName,
         getVenuesByZip: getVenuesByZip,
         getVenueById: getVenueById,
         getVenuesByLatLng: getVenuesByLatLng,
-        getAllVenues: function () { return venues; },
+        getAllVenues: getAllVenues,
         getMenuById: getMenuById,
         getMenuItemsById: getMenuItemsById,
         getVenueFooterDetail: getVenueFooterDetail,
