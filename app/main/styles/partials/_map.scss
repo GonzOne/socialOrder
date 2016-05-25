@@ -19,7 +19,12 @@
 
 }
 .map-venue-item {
-  @extend venue-item;
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin: -1px;
+  padding: 10px;
+  border-width: 0px;
   padding:0px;
 }
 .map-distance-module {
