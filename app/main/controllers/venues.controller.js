@@ -46,7 +46,7 @@ angular.module('main')
           vm.isUserLoggedIn = AppGlobals.isLoggedIn();
         }
       }
-
+        /*
       function checkUserToken () {
         LoginService.checkCredentials().then( function () {
           vm.isUserLoggedIn = AppGlobals.isLoggedIn();
@@ -70,6 +70,7 @@ angular.module('main')
           $log.log('checkCredentials failed:', error);
         });
       }
+
       function locationError () {
         var locationErrorPopup = $ionicPopup.show({
           template: 'We could not detect your location. <br> Please select a venue.',
@@ -115,9 +116,10 @@ angular.module('main')
               listAllVenues();
             });
       }
-
+      */
       function listAllVenues () {
         $log.log('VenuesCtrl -  listAllVenues');
+        /*
         var list = VenueService.getAllVenues();
         var len = list.length;
         var venues = [];
@@ -129,8 +131,27 @@ angular.module('main')
         }
         vm.list = venues;
         vm.venuesReady = true;
-      }
+        */
+        var list = [];
+        var len = 0;
+        var venues = [];
+        VenueService.getAllVenues().then(function (data) {
+          $log.log('Retieved Venues :', data);
+          list = data;
+          len = list.length;
+          for (var i = 0; i < len; i++) {
+            $log.log(list[i]);
+            if ( list[i].active === 1) {
+              venues.push(list[i]);
+            }
+          }
+        }, function (error) {
+          $log.log('Error:', error);
+        });
 
+        vm.list = venues;
+      }
+      /*
       function displayVenuesinPostalCode (zipcode) {
         $log.log('VenuesCtrl -  displayVenuesinPostalCode ', zipcode);
 
@@ -152,10 +173,11 @@ angular.module('main')
 
         });
       }
-
+      */
       $scope.$on('$ionicView.enter', function () {
-        checkUserToken();
-        getUsersLocation();
+        //checkUserToken();
+        //getUsersLocation(); removed Geolocation for now.
+        listAllVenues();
 
       });
       $scope.$on('$ionicView.leave', function () {
