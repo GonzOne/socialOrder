@@ -16,7 +16,6 @@
     <plugin name="cordova-plugin-camera" spec="~2.1.0" />
     <plugin name="cordova-plugin-contacts" spec="~2.0.1" />
     <plugin name="com.cordova.plugins.sms" spec="~0.1.8" />
-    <plugin name="com.synconset.imagepicker" spec="~1.0.7" />
     <plugin name="cordova-plugin-file" spec="~4.1.1" />
     <plugin name="cordova-plugin-file-transfer" spec="~1.5.0" />
     <plugin name="cordova-plugin-geolocation" spec="~2.1.0" />
@@ -24,6 +23,7 @@
     <plugin name="cordova-plugin-nativeaudio" spec="~3.0.6" />
     <plugin name="cordova-plugin-app-event" spec="~1.2.0" />
     <plugin name="ionic-plugin-keyboard" spec="https://github.com/driftyco/ionic-plugins-keyboard.git" />
+    <plugin name="cordova-plugin-image-picker" spec="https://github.com/wymsee/cordova-imagePicker.git" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
