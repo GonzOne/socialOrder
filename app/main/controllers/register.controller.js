@@ -21,6 +21,9 @@ angular.module('main')
         email: '',
         password: ''
       };
+      vm.confirmedPassword;
+      vm.month;
+      vm.year;
       vm.userProfile = {
         uid: '',
         firstName: '',
@@ -177,6 +180,7 @@ angular.module('main')
       }
 
       function register () {
+
         Auth.$createUser(vm.user).then(function (authData) {
           $log.log('register user returned : ', authData);
           AppGlobals.setUserId(authData.uid);
@@ -202,6 +206,21 @@ angular.module('main')
         });
       }
       function createAcount () {
+        $log.log('confirm ', vm.confirmedPassword, ' user ', vm.user.password);
+        if (vm.user.password !== vm.confirmedPassword) {
+          $ionicPopup.alert({
+            title: 'Password Error',
+            template: 'Passwords do not match, please re-enter.'
+          });
+          return;
+        }
+        if (vm.userProfile.profilePicUrl.length === 0) {
+          $ionicPopup.alert({
+            title: 'Profile Image',
+            template: 'Please add a profile image, we need to be able to identify you.'
+          });
+          return;
+        }
         $ionicLoading.show({
           template: '<ion-spinner class="spinner-light" icon="spiral"></ion-spinner><br>Saving your profile...'
         });
