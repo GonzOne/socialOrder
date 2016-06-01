@@ -51,6 +51,7 @@ angular.module('main', [
     if (window.cordova) {
       AppGlobals.setWebView(true);
       $cordovaBadge.clear();
+      window.cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
     }
     if ( window.cordova && window.cordova.plugins.NativeAudio ) {
       window.plugins.NativeAudio.preloadSimple('notification', '/main/assets/audio/notification.wav', function (msg) {
