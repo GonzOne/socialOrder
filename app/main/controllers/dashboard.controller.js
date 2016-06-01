@@ -114,9 +114,11 @@ angular.module('main')
               .then(function (data) {
                 vm.orderCount = data.length;
                 vm.unwatch = orders.$watch(function () {
+                  $log.log('watching orders', vm.isWebView);
                   if (vm.isWebView) {
                     $cordovaVibration.vibrate(100);
                     $cordovaNativeAudio.play('notification');
+                    $log.log('play sound');
                   }
                   vm.orderCount = data.length;
                 });

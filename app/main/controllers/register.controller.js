@@ -119,13 +119,11 @@ angular.module('main')
               .then(function (data) {
                 AppGlobals.setUserRole = data.role;
                 AppGlobals.setLoggedIn(true);
-                $state.go('profile');
                 $ionicLoading.hide();
                 $ionicPopup.alert({
                   title: 'Success',
                   template: 'Thanks for joining!'
                 });
-
               }, function (error) {
                 $ionicLoading.hide();
                 $ionicPopup.alert({

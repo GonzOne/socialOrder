@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-    .controller('CheckoutController', function ($scope, $state, parameters, $ionicPopup, $ionicLoading, AppGlobals, VenueService, LoginService, MessageService, CartService, $log) {
+    .controller('CheckoutController', function ($scope, $state, parameters, $ionicPopup, $ionicLoading, AppGlobals, VenueService, LoginService, MessageService, CartService, UserData, $log) {
       var vm = this;
       vm.items = parameters;
       vm.total;

@@ -105,17 +105,16 @@ angular.module('main')
       }
       function aquireServer () {
         $ionicLoading.show({
-          template: '<ion-spinner class="spinner-light" icon="spiral"></ion-spinner><br>Aquiring Server..'
+          template: '<ion-spinner class="spinner-light" icon="spiral"></ion-spinner><br>Order added to the cue'
         });
-        /*
-        we should time out TBD.
+
         $timeout(function () {
           $ionicLoading.hide();
 
-        }, 6000).then(function () {
+        }, 3000).then(function () {
               // You know the timeout is done here
         });
-        */
+
         vm.directMessage = MessageService.getDirectMessageById(AppGlobals.getDirectChannelId());
         vm.directMessage.$loaded().then(function () {
           vm.unwatch = vm.directMessage.$watch(function () {
