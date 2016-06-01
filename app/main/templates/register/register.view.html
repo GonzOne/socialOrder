@@ -24,7 +24,7 @@
 
             <div class="list">
                     <div class="form-input">
-                        <input name="first_name" class="register-input" placeholder="Your First name" type="text" ng-model="registerController.user.firstName" required>
+                        <input name="first_name" class="register-input" placeholder="Your First name" type="text" ng-model="registerController.userProfile.firstName" required>
                     </div>
 
                     <div ng-messages="registerForm.first_name.$error" role="alert">
@@ -32,7 +32,7 @@
                     </div>
 
                         <div class="form-input">
-                            <input name="last_name" class="register-input" placeholder="Your Last name" type="text" ng-model="registerController.user.lastName" required>
+                            <input name="last_name" class="register-input" placeholder="Your Last name" type="text" ng-model="registerController.userProfile.lastName" required>
                         </div>
 
                         <div ng-messages="registerForm.last_name.$error" role="alert">
@@ -51,13 +51,39 @@
                             </div>
 
                                 <div class="form-input">
-                                    <input name="user_password" class="register-input" placeholder="password" type="password" ng-model="registerController.user.password" required>
+                                    <input name="user_password" class="register-input" placeholder="password" type="password" ng-model="registerController.user.password"
+                                           minlength="8" maxlength="20"
+                                           required>
                                 </div>
 
                                 <div ng-messages="registerForm.user_password.$error" role="alert">
                                     <div class="error-message" class="required-message" ng-message-exp="'required'">* required</div>
+                                    <div class="error-message" ng-message-exp="['minlength', 'maxlength']">
+                                        Your password must be between 8 and 20 characters long
+                                    </div>
                                 </div>
 
+                                <div class="form-input">
+                                    <input name="confirm_password" class="register-input" placeholder="re-type password" match-password="user_password" type="password" ng-model="registerController.confirmedPassword"
+                                           minlength="8" maxlength="20"
+                                           required>
+                                </div>
+                                <div class="clearfix">
+                                    <div ng-messages="registerForm.confirm_password.$error" ng-if="registerForm.$submitted || registerForm.confirm_password.$dirty" ng-messages-multiple="ng-messages-multiple" class="error-messages">
+                                        <div ng-message="required" class="message">* required</div>
+                                        <div class="error-message" ng-message-exp="['minlength', 'maxlength']">
+                                        <div ng-message="passwordMatch" class="message ">Your passwords did not match.</div>
+                                    </div>
+                                </div>
+                                <!--
+                                <div ng-messages="registerForm.confirm_password.$error" role="alert">
+                                    <div class="error-message" class="required-message" ng-message-exp="'required'">* required</div>
+                                    <div class="error-message" ng-message-exp="['minlength', 'maxlength']">
+                                        Your password must be between 8 and 20 characters long
+                                    </div>
+                                    <div class="error-message" >Your passwords did not match</div>
+                                </div>
+                                -->
                 <div class="profile-id">
                     <div class="form-input">
                         <div class="age-message-header">May we see some ID please?</div>
@@ -67,12 +93,12 @@
                         <div class="row">
                             <label class="dob">D.O.B</label>
                             <div id="dob-month">
-                                <select class="minimal"name="dob_month" id="month" ng-model="registerController.month" ng-options="m.name for m in registerController.months | validMonths:year" ng-change="registerController.updateDate('month')" required>
+                                <select class="minimal"name="dob_month" id="month" ng-model="registerController.month" ng-options="m.name for m in registerController.months | validMonths:year" ng-change="registerController.updateMonth()" required>
                                     <option value='' disabled>Month</option>
                                 </select>
                             </div>
                             <div id="dob-year">
-                                <select class="minimal" name="dob_year" id="year" ng-model="registerController.year" ng-options="y for y in registerController.years" ng-change="registerController.updateDate('year')" required>
+                                <select class="minimal" name="dob_year" id="year" ng-model="registerController.year" ng-options="y for y in registerController.years" ng-change="registerController.updateYear()" required>
                                     <option value='' disabled>Year</option>
                                 </select>
                             </div>
@@ -89,11 +115,11 @@
                                 <label>Gender</label>
                                 <ul>
                                     <li>
-                                        <input type="radio" name="gender_select" class="gender-radio" id="profile-male" ng-model="colorValue" value="male" required>
+                                        <input type="radio" name="gender_select" class="gender-radio" id="profile-male" ng-model="registerController.userProfile.sex" value="male" required>
                                         <label class="radio-label" for="profile-male">Male</label>
                                     </li>
                                     <li>
-                                        <input type="radio" name="gender_select" class="gender-radio" id="profile-female" ng-model="colorValue" value="female" required>
+                                        <input type="radio" name="gender_select" class="gender-radio" id="profile-female" ng-model="registerController.userProfile.sex" value="female" required>
                                         <label class="radio-label" for="profile-female">Female </label>
                                     </li>
                                     <li>
@@ -103,11 +129,13 @@
                             <div ng-messages="registerForm.gender_select.$error" role="alert">
                                 <div class="gender-error-message" ng-message-exp="'required'">* Required</div>
                             </div>
+                            <!--
                                <div class="id-photo-mod">
                                    <button class="button button-clear icon id-icon-camera ion-ios-camera">
                                    </button>
                                    <label>Take a photo of your id (optional)</label>
                                </div>
+                            -->
                         </div>
                     </div>
                 </div>
@@ -139,7 +167,8 @@
                         registerController.userProfile.firstName.length===0 ||
                         registerController.userProfile.lasttName.length===0 ||
                         registerController.userProfile.sex.length===0 ||
-                        registerController.userProfile.dateOfBirth.length===0 ||
+                        registerController.month.length===0 ||
+                        registerController.year.length===0 ||
                         registerController.userProfile.profilePicUrl.length===0 ||
                         !registerController.userProfile.terms"
                         ng-click="registerController.createAcount()">
