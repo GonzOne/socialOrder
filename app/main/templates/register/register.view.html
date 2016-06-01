@@ -91,14 +91,13 @@
                     </div>
                     <div class="form-input">
                         <div class="row">
-                            <label class="dob">D.O.B</label>
                             <div id="dob-month">
-                                <select class="minimal"name="dob_month" id="month" ng-model="registerController.month" ng-options="m.name for m in registerController.months | validMonths:year" ng-change="registerController.updateMonth()" required>
+                                <select class="minimal"name="dob_month" id="month" ng-model="registerController.month" ng-options="m.id for m in registerController.months | validMonths:months" required>
                                     <option value='' disabled>Month</option>
                                 </select>
                             </div>
                             <div id="dob-year">
-                                <select class="minimal" name="dob_year" id="year" ng-model="registerController.year" ng-options="y for y in registerController.years" ng-change="registerController.updateYear()" required>
+                                <select class="minimal" name="dob_year" id="year" ng-model="registerController.year" ng-options="y for y in registerController.years" required>
                                     <option value='' disabled>Year</option>
                                 </select>
                             </div>
@@ -160,7 +159,7 @@
           </form>
 
             <div class="login-button-container mt-20">
-                <button class="button button-block button-royal"
+                <button ng-show="!registerController.userCreated" class="button button-block button-royal"
                         ng-disabled="
                         registerController.user.email.length===0 ||
                         registerController.user.password.length===0  ||
