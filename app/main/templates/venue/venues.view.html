@@ -19,10 +19,11 @@
 
     <ion-footer-bar class="bar bar-royal">
         <div class="button-bar">
+            <!--
             <button class="button button-clear" ui-sref="map({zipcode: venuesController.userZipcode})">
                 <i class="icon ion-map"></i>
             </button>
-
+            -->
             <button class="button button-clear" ng-click="venuesController.logIn()">
                 <!-- ng-class="$variableToEvaluate ? 'class-if-true' : 'class-if-false'"-->
                 <i ng-class="venuesController.isUserLoggedIn ?  'icon ion-log-out' : 'icon ion-log-in'"></i>
