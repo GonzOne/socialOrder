@@ -102,7 +102,9 @@ label.dob{
 .profile-id{
   background-color:$royal;
   color:$light;
-  margin-top:10px;
+  margin-top: 40px;
+  padding-bottom: 30px;
+
   .age-message-header{
     font-weight:600;
     font-size: 16px;
@@ -118,6 +120,7 @@ label.dob{
     color: $stable;
   }
   .gender-profile{
+
 
     ul {
       width: 100%;
