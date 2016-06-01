@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-    .controller('ProfileController', function ($scope, $state, $ionicLoading, $ionicHistory, $cordovaCamera, $cordovaImagePicker, profile, AppGlobals, LoginService, ImageService, $log) {
+    .controller('ProfileController', function ($scope, $state, $ionicLoading, $ionicPopup, $ionicHistory, $cordovaCamera, $cordovaImagePicker, profile, AppGlobals, LoginService, ImageService, ProfileService, $log) {
       var vm = this;
       //exports
       vm.edit = edit;
@@ -8,6 +8,23 @@ angular.module('main')
       vm.goBack = goBack;
       vm.captureImage = captureImage;
       vm.selectImage = selectImage;
+      vm.updateProfile = updateProfile;
+
+      function updateProfile () {
+        ProfileService.updateProfileById(vm.user.uid, vm.user).then(function () {
+          $log.log('updateProfileById saved ');
+          vm.editActive = false;
+          $ionicPopup.alert({
+            title: 'PROFILE UPDATED',
+            template: 'Your changes have been applied.'
+          });
+        }, function (error) {
+          $ionicPopup.alert({
+            title: 'UPDATE PROFILE ERROR',
+            template: error
+          });
+        });
+      }
       function captureImage () {
         var pictureSource = navigator.camera.PictureSourceType.CAMERA;
         var destinationType = navigator.camera.DestinationType.FILE_URI;
@@ -51,6 +68,9 @@ angular.module('main')
       //refactor - add to imageService
       function uploadImage () {
         $log.log('uploadImage init');
+        if (typeof vm.imageSrc === 'undefined') {
+          return;
+        }
         var filePath = vm.imageSrc;
         var folder = 'profileAssets';
         ImageService.uploadImage(filePath, folder).then(function (results) {
@@ -69,7 +89,6 @@ angular.module('main')
         vm.editActive = !vm.editActive;
       }
       function logIn () {
-        $log.log('wtf');
         if (!AppGlobals.isLoggedIn()) {
           LoginService.displayLogIn().then( function (res) {
             switch (res) {

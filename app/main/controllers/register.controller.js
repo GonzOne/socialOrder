@@ -1,7 +1,8 @@
 'use strict';
 angular.module('main')
-    .controller('RegisterController', function ($scope, $ionicHistory, $ionicLoading, $ionicPopup, $cordovaCamera, ImageService, $cordovaImagePicker,  Auth, localStorageService, AppModalService, AppGlobals, ProfileService, $log) {
+    .controller('RegisterController', function ($scope, $state, $ionicHistory, $ionicLoading, $ionicPopup, $cordovaCamera, ImageService, $cordovaImagePicker,  Auth, localStorageService, AppModalService, AppGlobals, ProfileService, $log) {
       var vm = this;
+      vm.userCreated = false;
       vm.months = [
             {id: 1, name: 'January'},
             {id: 2, name: 'February'},
@@ -84,6 +85,9 @@ angular.module('main')
       //refactor - add to imageService
       function uploadImage () {
         $log.log('uploadImage init');
+        if (typeof vm.imageSrc === 'undefined') {
+          return;
+        }
         var filePath = vm.imageSrc;
         var folder = 'profileAssets';
         ImageService.uploadImage(filePath, folder).then(function (results) {
@@ -108,27 +112,33 @@ angular.module('main')
       function createPatronProfile (uid) {
         $log.log('createPatronProfile ', vm.userProfile);
         vm.userProfile.uid = uid;
-        vm.userProfile.profilePicUrl = vm.profilePic;
         ProfileService.createPatronProfile(vm.userProfile).then(function (uid) {
           $log.log('patron profile created', uid);
+          vm.userCreated = true;
           ProfileService.getMetaProfileById(AppGlobals.getUserId())
               .then(function (data) {
                 AppGlobals.setUserRole = data.role;
                 AppGlobals.setLoggedIn(true);
+                $state.go('profile');
                 $ionicLoading.hide();
-                /*
-                if (UserData.getVenue() !== null) {
-                    //$state.go('app.order');
-                  $ionicHistory.goBack();
-                } else {
-                  $state.go('main');
-                }
-                */
+                $ionicPopup.alert({
+                  title: 'Success',
+                  template: 'Thanks for joining!'
+                });
+
               }, function (error) {
-                $log.log('Error:', error);
+                $ionicLoading.hide();
+                $ionicPopup.alert({
+                  title: 'RETRIVE META ERROR',
+                  template: error
+                });
               });
         }, function (error) {
-          $log.log('createProfile returned ', error);
+          $ionicLoading.hide();
+          $ionicPopup.alert({
+            title: 'PROFILE CREATION ERROR',
+            template: error
+          });
         });
 
       }
@@ -146,7 +156,11 @@ angular.module('main')
           AppGlobals.setUserRole = metaProfile.role;
           createPatronProfile(uid);
         }, function (error) {
-          $log.log('createProfile returned ', error);
+          $ionicLoading.hide();
+          $ionicPopup.alert({
+            title: 'META CREATION ERROR',
+            template: error
+          });
         });
       }
       function login () {
@@ -221,6 +235,8 @@ angular.module('main')
           });
           return;
         }
+        $log.log('vm.userProfile.profilePicUrl  ', vm.userProfile.profilePicUrl );
+        vm.userProfile.dateOfBirth = vm.month + '/' + vm.year;
         $ionicLoading.show({
           template: '<ion-spinner class="spinner-light" icon="spiral"></ion-spinner><br>Saving your profile...'
         });
