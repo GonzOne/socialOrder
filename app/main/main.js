@@ -9,7 +9,8 @@ angular.module('main', [
   'ngAnimate',
   'LocalStorageModule',
   'ngMap',
-  'ngMessages'
+  'ngMessages',
+  'ngPassword'
 ])
 .constant('KEYS', {
   firebase: 'https://socialorder.firebaseio.com/',
